@@ -23,7 +23,7 @@ public class HoaDonRepository {
 
     public List<HoaDonReponse> layHoaDon() {
         List<HoaDonReponse> listHD = new ArrayList<>();
-        String sql = "select NGAYTAO, hd.MA, hdct.SOLUONG * hdct.DONGIA as [Tong tien], nv.TEN, hd.TINHTRANG from HOADON hd join HOADONCHITIET hdct on hd.id = hdct.ID_HOADON join NHANVIEN nv on hd.ID_NHANVIEN = nv.Id order by hd.MA asc";
+        String sql = "select NGAYTAO, hd.MAHD, hdct.SOLUONG * hdct.DONGIA as [Tong tien], nv.HOTEN, hd.TRANGTHAI from HOADON hd join HOADONCHITIET hdct on hd.id = hdct.IDHD join NHANVIEN nv on hd.IDNV = nv.Id order by hd.MAHD asc";
 
         try {
             Connection con = DBContext.getConnection();
@@ -40,7 +40,7 @@ public class HoaDonRepository {
 
     public List<HoaDonChiTietReponse> layHoaDonCT(String ma) {
         List<HoaDonChiTietReponse> list = new ArrayList<>();
-        String select = "select s.TEN, s.Gia, hdct.SOLUONG, hdct.SOLUONG * s.GIA from SACH s join HOADONCHITIET hdct on s.Id = hdct.ID_SACH join HOADON hd on hd.Id = hdct.ID_HOADON where hd.MA = ?";
+        String select = "select s.TEN, s.GiaBan, hdct.SOLUONG, hdct.SOLUONG * s.GIABAN from HOPTHIT s join HOADONCHITIET hdct on s.Id = hdct.IDht join HOADON hd on hd.Id = hdct.IDHD where hd.MAHD = ?";
         try ( Connection con = DBContext.getConnection();  PreparedStatement sttm = con.prepareStatement(select)) {
             sttm.setString(1, ma);
             ResultSet rs = sttm.executeQuery();
@@ -56,7 +56,7 @@ public class HoaDonRepository {
 
     public List<HoaDonReponse> layHoaDontuNgay(String dateBD, String dateKT) {
         List<HoaDonReponse> listHD = new ArrayList<>();
-        String sql = "select NGAYTAO, hd.MA, hdct.SOLUONG * hdct.DONGIA as [Tong tien], nv.TEN, hd.TINHTRANG from HOADON hd join HOADONCHITIET hdct on hd.id = hdct.ID_HOADON join NHANVIEN nv on hd.ID_NHANVIEN = nv.Id where NGAYTAO between ? and  ? order by NGAYTAO";
+        String sql = "select NGAYTAO, hd.MAHD, hdct.SOLUONG * hdct.DONGIA as [Tong tien], nv.HOTEN, hd.TRANGTHAI from HOADON hd join HOADONCHITIET hdct on hd.id = hdct.IDHD join NHANVIEN nv on hd.IDNV = nv.Id where NGAYTAO between ? and  ? order by NGAYTAO";
 
         try ( Connection con = DBContext.getConnection();  PreparedStatement sttm = con.prepareStatement(sql)) {
             sttm.setString(1, dateBD);

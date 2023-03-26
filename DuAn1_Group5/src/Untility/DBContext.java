@@ -20,7 +20,7 @@ public class DBContext {
     private static final String PASSWORD = "123456";
     private static final String SERVER = "DESKTOP-49VFT8M";
     private static final String PORT = "1433";
-    private static final String DATABASE_NAME = "DUAN1";
+    private static final String DATABASE_NAME = "Da1_Group5";
     private static final boolean USING_SSL = false;
     
     private static String CONNECT_STRING;

@@ -2,29 +2,36 @@ package DomainModels;
 
 public class HoaDon {
 
-    private String id, idKH, idNV, idVi, ma, ngayTao, ngayThanhToan;
+    private String id, idKH, idNV, idLichSuTieuDiem, idChinhSachDoiHang, ma, ngayTao, ngayThanhToan;
     private double tienKhachDua;
-    private int tinhTrang;
     private double tongTien;
-    private int soDiemKhacHang;
+    private int trangThai;
+    private int phanTramGiamGia;
+    private int soDiemSuDung;
+    private double soTienQuyDoi;
+    
 
     public HoaDon() {
     }
 
-    public HoaDon(String id, String idKH, String idNV, String idVi, String ma, String ngayTao, String ngayThanhToan, double tienKhachDua, int tinhTrang, double tongTien, int soDiemKhacHang) {
+    public HoaDon(String id, String idKH, String idNV, String idLichSuTieuDiem, String idChinhSachDoiHang, String ma, String ngayTao, String ngayThanhToan, double tienKhachDua, double tongTien, int trangThai, int phanTramGiamGia, int soDiemSuDung, double soTienQuyDoi) {
         this.id = id;
         this.idKH = idKH;
         this.idNV = idNV;
-        this.idVi = idVi;
+        this.idLichSuTieuDiem = idLichSuTieuDiem;
+        this.idChinhSachDoiHang = idChinhSachDoiHang;
         this.ma = ma;
         this.ngayTao = ngayTao;
         this.ngayThanhToan = ngayThanhToan;
         this.tienKhachDua = tienKhachDua;
-        this.tinhTrang = tinhTrang;
         this.tongTien = tongTien;
-        this.soDiemKhacHang = soDiemKhacHang;
+        this.trangThai = trangThai;
+        this.phanTramGiamGia = phanTramGiamGia;
+        this.soDiemSuDung = soDiemSuDung;
+        this.soTienQuyDoi = soTienQuyDoi;
     }
 
+    
     public String getId() {
         return id;
     }
@@ -49,12 +56,20 @@ public class HoaDon {
         this.idNV = idNV;
     }
 
-    public String getIdVi() {
-        return idVi;
+    public String getIdLichSuTieuDiem() {
+        return idLichSuTieuDiem;
     }
 
-    public void setIdVi(String idVi) {
-        this.idVi = idVi;
+    public void setIdLichSuTieuDiem(String idLichSuTieuDiem) {
+        this.idLichSuTieuDiem = idLichSuTieuDiem;
+    }
+
+    public String getIdChinhSachDoiHang() {
+        return idChinhSachDoiHang;
+    }
+
+    public void setIdChinhSachDoiHang(String idChinhSachDoiHang) {
+        this.idChinhSachDoiHang = idChinhSachDoiHang;
     }
 
     public String getMa() {
@@ -89,14 +104,6 @@ public class HoaDon {
         this.tienKhachDua = tienKhachDua;
     }
 
-    public int getTinhTrang() {
-        return tinhTrang;
-    }
-
-    public void setTinhTrang(int tinhTrang) {
-        this.tinhTrang = tinhTrang;
-    }
-
     public double getTongTien() {
         return tongTien;
     }
@@ -105,13 +112,39 @@ public class HoaDon {
         this.tongTien = tongTien;
     }
 
-    public int getSoDiemKhacHang() {
-        return soDiemKhacHang;
+    public int getTrangThai() {
+        return trangThai;
     }
 
-    public void setSoDiemKhacHang(int soDiemKhacHang) {
-        this.soDiemKhacHang = soDiemKhacHang;
+    public void setTrangThai(int trangThai) {
+        this.trangThai = trangThai;
     }
+
+    public int getPhanTramGiamGia() {
+        return phanTramGiamGia;
+    }
+
+    public void setPhanTramGiamGia(int phanTramGiamGia) {
+        this.phanTramGiamGia = phanTramGiamGia;
+    }
+
+    public int getSoDiemSuDung() {
+        return soDiemSuDung;
+    }
+
+    public void setSoDiemSuDung(int soDiemSuDung) {
+        this.soDiemSuDung = soDiemSuDung;
+    }
+
+    public double getSoTienQuyDoi() {
+        return soTienQuyDoi;
+    }
+
+    public void setSoTienQuyDoi(double soTienQuyDoi) {
+        this.soTienQuyDoi = soTienQuyDoi;
+    }
+
+    
 
     public String tinhTrang(int tt){
         if (tt==0) {

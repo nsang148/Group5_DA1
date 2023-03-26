@@ -2,15 +2,15 @@
 package DomainModels;
 
 public class HoaDonCT {
-private String id,idSach,idHD;
+private String id,idHT,idHD;
     private double donGia,tienThua,TienGiamGia;
     private int soLuong ,tinhTrang;
     public HoaDonCT() {
     }
 
-    public HoaDonCT(String id, String idSach, String idHD, double donGia, double tienThua, double TienGiamGia, int soLuong, int tinhTrang) {
+    public HoaDonCT(String id, String idHT, String idHD, double donGia, double tienThua, double TienGiamGia, int soLuong, int tinhTrang) {
         this.id = id;
-        this.idSach = idSach;
+        this.idHT = idHT;
         this.idHD = idHD;
         this.donGia = donGia;
         this.tienThua = tienThua;
@@ -27,12 +27,12 @@ private String id,idSach,idHD;
         this.id = id;
     }
 
-    public String getIdSach() {
-        return idSach;
+    public String getIdHT() {
+        return idHT;
     }
 
-    public void setIdSach(String idSach) {
-        this.idSach = idSach;
+    public void setIdHT(String idHT) {
+        this.idHT = idHT;
     }
 
     public String getIdHD() {
@@ -83,6 +83,7 @@ private String id,idSach,idHD;
         this.tinhTrang = tinhTrang;
     }
 
+    
    
  
     
