@@ -150,6 +150,6 @@ public class KhachHangModel {
 
     
     public Object[] toRowData(){
-        return new Object[]{id, ma, hoTen, sdt, ngaySinh, diaChi, gioiTinh == true ? "Nam" : "Nữ", trangThai == true ? "Khách Hàng Thân Thiết" : "Khách Hàng Không Thân Thiết", ghiChu, soLanMua, idViDiem};
+        return new Object[]{id, ma, hoTen, sdt, ngaySinh, diaChi, gioiTinh ? "Nam" : "Nữ", trangThai ? "Khách Hàng Thân Thiết" : "Khách Hàng Không Thân Thiết", ghiChu, soLanMua};
     }
 }

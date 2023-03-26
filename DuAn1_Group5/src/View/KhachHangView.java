@@ -7,8 +7,10 @@ package View;
 import DomainModels.KhachHangModel;
 import Service.Implement.KhachHangServiceImpl;
 import Service.KhachHangService;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -34,7 +36,7 @@ public class KhachHangView extends javax.swing.JFrame {
         initComponents();
         txtID.disable();
         tblKhachHang.setModel(dtm);
-        String[] header = {"ID", "Mã", "Họ Tên", "SĐT", "Ngày Sinh", "Địa Chỉ", "Giới Tính", "TT", "Ghi Chú", "SLM", "IDVD"};
+        String[] header = {"ID", "Mã", "Họ Tên", "SĐT", "Ngày Sinh", "Địa Chỉ", "Giới Tính", "TT", "Ghi Chú", "SLM"};
         listKH = khachHangService.getAll();
         dtm.setColumnIdentifiers(header);
         ShowData(listKH);
@@ -47,14 +49,16 @@ public class KhachHangView extends javax.swing.JFrame {
     }
     
     private KhachHangModel getData(){
-    KhachHangModel khachHang = new KhachHangModel();
+     KhachHangModel khachHang = new KhachHangModel();
     khachHang.setMa(txtMa.getText());
     khachHang.setHoTen(txtHoTen.getText());
     khachHang.setSdt(txtSDT.getText());
-    khachHang.setNgaySinh(txtNgaySinh.getText());
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                String ngaySinh = sdf.format(txtNgaySinh.getDate());
+     
 //    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 //    String date = sdf.format(txtNgaySinh.getDate);
-//    khachHang.setNgaySinh(date);
+    khachHang.setNgaySinh(ngaySinh);
     
     khachHang.setDiaChi(txtDiaChi.getText());
     
@@ -80,20 +84,28 @@ public class KhachHangView extends javax.swing.JFrame {
     txtMa.setText(khachHang.getMa());
     txtHoTen.setText(khachHang.getHoTen());
     txtSDT.setText(khachHang.getSdt());
-    txtNgaySinh.setText(khachHang.getNgaySinh());
+//    txtNgaySinh.setText(khachHang.getNgaySinh());
+ try {
+            Date date = (Date) new SimpleDateFormat("yyyy-MM-dd").parse((String) tblKhachHang.getValueAt(index, 4));
+            txtNgaySinh.setDate(date);
+        } catch (ParseException ex) {
+
+        }
+
     txtDiaChi.setText(khachHang.getDiaChi());
+//    int gender = khachHang.isGioiTinh();
     boolean gt = khachHang.isGioiTinh();
-        if (gt) {
+        if (gt == true) {
             rdoNam.setSelected(true);
         } else {
-            rdoNu.setSelected(false);
+            rdoNu.setSelected(true);
         }
         
     boolean tt = khachHang.isTrangThai();
         if (tt) {
             rdoKHTT.setSelected(true);
         } else {
-            rdoKHKTT.setSelected(false);
+            rdoKHKTT.setSelected(true);
         }
     txtGhiChu.setText(khachHang.getGhiChu());
     txtSLM.setText(String.valueOf(khachHang.getSoLanMua()));
@@ -119,7 +131,6 @@ public class KhachHangView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         txtSDT = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        txtNgaySinh = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         txtDiaChi = new javax.swing.JTextField();
@@ -134,6 +145,7 @@ public class KhachHangView extends javax.swing.JFrame {
         txtSLM = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtIDViDiem = new javax.swing.JTextField();
+        txtNgaySinh = new com.toedter.calendar.JDateChooser();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKhachHang = new javax.swing.JTable();
@@ -181,12 +193,6 @@ public class KhachHangView extends javax.swing.JFrame {
         });
 
         jLabel5.setText("Ngày Sinh");
-
-        txtNgaySinh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNgaySinhActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Địa Chỉ");
 
@@ -245,7 +251,7 @@ public class KhachHangView extends javax.swing.JFrame {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtNgaySinh))
+                                        .addComponent(txtNgaySinh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -287,12 +293,8 @@ public class KhachHangView extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel9)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -305,7 +307,10 @@ public class KhachHangView extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel6)
-                            .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtGhiChu, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -488,10 +493,6 @@ public class KhachHangView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSDTActionPerformed
 
-    private void txtNgaySinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgaySinhActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtNgaySinhActionPerformed
-
     private void rdoKHKTTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoKHKTTActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rdoKHKTTActionPerformed
@@ -597,7 +598,7 @@ public class KhachHangView extends javax.swing.JFrame {
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtIDViDiem;
     private javax.swing.JTextField txtMa;
-    private javax.swing.JTextField txtNgaySinh;
+    private com.toedter.calendar.JDateChooser txtNgaySinh;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtSLM;
     // End of variables declaration//GEN-END:variables
