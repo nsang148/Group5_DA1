@@ -92,8 +92,6 @@ public class FormQuanLyHoaDon extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        setPreferredSize(new java.awt.Dimension(1010, 640));
-
         jButton1.setText("All");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -214,7 +212,7 @@ public class FormQuanLyHoaDon extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Tên sách", "Đơn giá", "Số lượng", "Thành tiền"
+                "Tên Hộp thịt", "Đơn giá", "Số lượng", "Thành tiền"
             }
         ) {
             boolean[] canEdit = new boolean [] {
