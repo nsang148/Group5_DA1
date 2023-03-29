@@ -28,7 +28,7 @@ public class KhachHangRepository {
 "      ,[GhiChu]\n" +
 "      ,[SoLanMua]\n" +
 "      ,[IdViDiem]\n" +
-"  FROM [dbo].[KhachHang] inner join ViDiem on KhachHang.IdViDiem = ViDiem.Id";
+"  FROM [dbo].[KhachHang]";
         try (Connection con = DBContext.getConnection(); PreparedStatement ps =con.prepareStatement(query)){
             ResultSet rs = ps.executeQuery();
             List<KhachHangModel> list =new ArrayList<>();
@@ -40,7 +40,6 @@ public class KhachHangRepository {
             return list;
         } catch (Exception e) {
             e.printStackTrace(System.out);
-            
         }
         return null;
     }
@@ -125,13 +124,13 @@ public class KhachHangRepository {
     }
     
     public static void main(String[] args) {
-//        List<KhachHangModel> getAll= new KhachHangRepository().getAll();
-//        for (KhachHangModel x : getAll) {
-//            System.out.println(x);
-//        }
-        KhachHangModel st = new KhachHangModel("PH23444", "NguyenVanS", "0184343", "2-2-2002", "NB", true, true, "null", 9);
-        boolean add = new KhachHangRepository().add(st);
-        System.out.println(add);
+        List<KhachHangModel> getAll= new KhachHangRepository().getAll();
+        for (KhachHangModel x : getAll) {
+            System.out.println(x);
+        }
+//        KhachHangModel st = new KhachHangModel("PH23444", "NguyenVanS", "0184343", "2-2-2002", "NB", true, true, "null", 9);
+//        boolean add = new KhachHangRepository().add(st);
+//        System.out.println(add);
         
         
     }
