@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup2">
+    </Component>
+  </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Title Frame Test"/>
@@ -933,12 +939,18 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rdoNam">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1"/>
+                        </Property>
                         <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Nam"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rdoNu">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup1"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="N&#x1eef;"/>
                       </Properties>
                     </Component>
@@ -949,12 +961,18 @@
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rdoKHTT">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup2"/>
+                        </Property>
                         <Property name="selected" type="boolean" value="true"/>
                         <Property name="text" type="java.lang.String" value="Kh&#xe1;ch H&#xe0;ng Th&#xe2;n Thi&#x1ebf;t"/>
                       </Properties>
                     </Component>
                     <Component class="javax.swing.JRadioButton" name="rdoKHKTT">
                       <Properties>
+                        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                          <ComponentRef name="buttonGroup2"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Kh&#xe1;ch H&#xe0;ng Kh&#xf4;ng Th&#xe2;n Thi&#x1ebf;t"/>
                       </Properties>
                       <Events>

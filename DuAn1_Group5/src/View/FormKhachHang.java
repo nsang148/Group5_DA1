@@ -170,6 +170,8 @@ public class FormKhachHang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
+        buttonGroup2 = new javax.swing.ButtonGroup();
         pnlTop = new javax.swing.JPanel();
         pnlActions = new javax.swing.JPanel();
         lblMinimize = new javax.swing.JLabel();
@@ -627,16 +629,20 @@ public class FormKhachHang extends javax.swing.JFrame {
 
         jLabel18.setText("Giới Tính");
 
+        buttonGroup1.add(rdoNam);
         rdoNam.setSelected(true);
         rdoNam.setText("Nam");
 
+        buttonGroup1.add(rdoNu);
         rdoNu.setText("Nữ");
 
         jLabel19.setText("Trạng Thái");
 
+        buttonGroup2.add(rdoKHTT);
         rdoKHTT.setSelected(true);
         rdoKHTT.setText("Khách Hàng Thân Thiết");
 
+        buttonGroup2.add(rdoKHKTT);
         rdoKHKTT.setText("Khách Hàng Không Thân Thiết");
         rdoKHKTT.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -1198,6 +1204,8 @@ public class FormKhachHang extends javax.swing.JFrame {
     private javax.swing.JPanel btn_khachHang;
     private javax.swing.JPanel btn_nhanVien;
     private javax.swing.JPanel btn_thongKe;
+    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JPanel ind_btns;
     private javax.swing.JPanel ind_data;
     private javax.swing.JPanel ind_fonts;
