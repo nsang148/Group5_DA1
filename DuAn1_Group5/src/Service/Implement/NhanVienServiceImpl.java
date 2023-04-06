@@ -42,15 +42,6 @@ public class NhanVienServiceImpl implements NhanVienService {
     }
 
     @Override
-    public String update(NhanVienModel obj) {
-        if (this.NVR.update(obj)) {
-            this.NVR.all();
-            return "Sửa thành công";
-        }
-        return "Sửa thất bại";
-    }
-
-    @Override
     public List<NhanVienModel> search(String timKiem) {
         List<NhanVienModel> temp = new ArrayList<>();
         for (NhanVienModel item : this.NVR.all()) {
@@ -64,7 +55,7 @@ public class NhanVienServiceImpl implements NhanVienService {
                 temp.add(item);
             } else if (item.getChucVu().equalsIgnoreCase(timKiem)) {
                 temp.add(item);
-            } else if ((item.getTrangThai() == 0 ? "Đang làm việc" : "Đã nghỉ việc").equalsIgnoreCase(timKiem)) {
+            } else if ((item.getTrangThai() == 0 ? "Đã nghỉ việc" : "Đang làm việc").equalsIgnoreCase(timKiem)) {
                 temp.add(item);
             } else if (item.getID().contains(timKiem)) {
                 temp.add(item);
@@ -102,4 +93,8 @@ public class NhanVienServiceImpl implements NhanVienService {
         return null;
     }
 
-}
+    @Override
+    public String update(NhanVienModel obj, String maNv) {
+        return NVR.update(obj, maNv);
+    }
+    }

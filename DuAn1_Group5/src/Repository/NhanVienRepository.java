@@ -36,8 +36,7 @@ public class NhanVienRepository {
                         rs.getString(6),
                         rs.getString(7),
                         rs.getString(8),
-                        rs.getString(9),
-                        rs.getInt(10)));
+                        rs.getInt(9)));
             }
         } catch (SQLException ex) {
             System.out.println("Lỗi tại all()");
@@ -52,7 +51,7 @@ public class NhanVienRepository {
     public boolean insert(NhanVienModel obj) {
         try {
             Connection conn = DBContext.getConnection();
-            String INSERT_NHANVIEN = "INSERT INTO dbo.NHANVIEN(MA,HOTEN,GIOITINH,NGAYSINH,DIACHI,SDT,MATKHAU,CHUCVU,TRANGTHAI) VALUES (?,?,?,?,?,?,?,?,?)";
+            String INSERT_NHANVIEN = "INSERT INTO dbo.NHANVIEN(MA,HOTEN,GIOITINH,NGAYSINH,DIACHI,SDT,CHUCVU,TRANGTHAI) VALUES (?,?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareCall(INSERT_NHANVIEN);
             ps.setString(1, obj.getMa());
             ps.setString(2, obj.getHoTen());
@@ -60,9 +59,8 @@ public class NhanVienRepository {
             ps.setString(4, obj.getNgaySinh());
             ps.setString(5, obj.getDiaChi());
             ps.setString(6, obj.getSdt());
-            ps.setString(7, obj.getMatKhau());
-            ps.setString(8, obj.getChucVu());
-            ps.setInt(9, obj.getTrangThai());
+            ps.setString(7, obj.getChucVu());
+            ps.setInt(8, obj.getTrangThai());
             System.out.println(INSERT_NHANVIEN);
             ps.execute();
             ps.close();
@@ -97,43 +95,40 @@ public class NhanVienRepository {
         return false;
     }
     
-    public boolean update(NhanVienModel obj) {
+    public String update(NhanVienModel obj,String maNv) {
         try {
             Connection conn = DBContext.getConnection();
-            String UPDATE_NHANVIEN = "UPDATE NHANVIEN SET MA = ?,"
+            String UPDATE_NHANVIEN = "UPDATE NHANVIEN SET "
                     + "HOTEN = ?,"
                     + "GIOITINH = ?,"
                     + "NGAYSINH = ?,"
                     + "DIACHI = ?,"
                     + "SDT = ?,"
-                    + "MATKHAU = ?,"
                     + "CHUCVU = ?,"
-                    + "TRANGTHAI = ?,"
-                    + "WHERE ID = ?";
+                    + "TRANGTHAI = ? "
+                    + "WHERE Ma = ?";
             PreparedStatement ps = conn.prepareCall(UPDATE_NHANVIEN);
-            ps.setString(1, obj.getMa());
-            ps.setString(2, obj.getHoTen());
-            ps.setString(3, obj.getGioiTinh());
-            ps.setString(4, obj.getNgaySinh());
-            ps.setString(5, obj.getDiaChi());
-            ps.setString(6, obj.getSdt());
+            ps.setString(1, obj.getHoTen());
+            ps.setString(2, obj.getGioiTinh());
+            ps.setString(3, obj.getNgaySinh());
+            ps.setString(4, obj.getDiaChi());
+            ps.setString(5, obj.getSdt());
             
-            ps.setString(7, obj.getMatKhau());
-            ps.setString(8, obj.getChucVu());
-            ps.setInt(9, obj.getTrangThai());
-            ps.setString(10, obj.getID());
+            ps.setString(6, obj.getChucVu());
+            ps.setInt(7, obj.getTrangThai());
+            ps.setString(8, obj.getMa());
             System.out.println(UPDATE_NHANVIEN);
             ps.execute();
             ps.close();
             conn.close();
-            return true;
+            return "Thành công";
         } catch (SQLException e) {
             e.printStackTrace();
             System.out.println("Lỗi tại update()");
-            return false;
+            return "Thất bại";
         } catch (Exception ex) {
             java.util.logging.Logger.getLogger(NhanVienRepository.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        return false;
+        return "Thất bại";
     }
 }

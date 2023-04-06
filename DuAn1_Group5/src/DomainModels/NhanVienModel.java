@@ -16,14 +16,13 @@ public class NhanVienModel {
     private String ngaySinh;
     private String diaChi;
     private String sdt;
-    private String matKhau;
     private String chucVu;
     private Integer trangThai;
 
     public NhanVienModel() {
     }
 
-    public NhanVienModel(String ID, String ma, String hoTen, String gioiTinh, String ngaySinh, String diaChi, String sdt, String matKhau, String chucVu, Integer trangThai) {
+    public NhanVienModel(String ID, String ma, String hoTen, String gioiTinh, String ngaySinh, String diaChi, String sdt, String chucVu, Integer trangThai) {
         this.ID = ID;
         this.ma = ma;
         this.hoTen = hoTen;
@@ -31,7 +30,6 @@ public class NhanVienModel {
         this.ngaySinh = ngaySinh;
         this.diaChi = diaChi;
         this.sdt = sdt;
-        this.matKhau = matKhau;
         this.chucVu = chucVu;
         this.trangThai = trangThai;
     }
@@ -92,13 +90,7 @@ public class NhanVienModel {
         this.sdt = sdt;
     }
 
-    public String getMatKhau() {
-        return matKhau;
-    }
-
-    public void setMatKhau(String matKhau) {
-        this.matKhau = matKhau;
-    }
+    
 
     public String getChucVu() {
         return chucVu;

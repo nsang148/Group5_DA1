@@ -15,7 +15,7 @@ public interface NhanVienService {
      List<NhanVienModel> getList();
     String insert(NhanVienModel obj);
     String delete(String ID);
-    String update(NhanVienModel obj);
+    String update(NhanVienModel obj,String idNv);
     List<NhanVienModel> search(String ten);
     NhanVienModel getNVByID(String ID); 
     List<NhanVienModel> sortListNhanVien();
