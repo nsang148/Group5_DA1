@@ -3,17 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ViewModels;
+package DomainModels;
 
-import java.util.ArrayList;
 import java.util.Date;
 
 /**
  *
  * @author Tus
  */
-public class HopThitView {
-
+public class HopThitDomain {
     private String id;
     private String ma;
     private String TenHopThit;
@@ -25,16 +23,14 @@ public class HopThitView {
     private String MoTa;
     private int TrangThai;
     private String idThit;
-    private String idLoaiThit;
+    private String idloaiThit;
     private String idXuatXu;
     private String idNCC;
 
-    private ArrayList<HopThitView> ht = new ArrayList<>();
-
-    public HopThitView() {
+    public HopThitDomain() {
     }
 
-    public HopThitView(String id, String ma, String TenHopThit, Double GiaNhap, Double GiaBan, int SoLuongTon, Date NgayDongGoi, int HSD, String MoTa, int TrangThai, String idThit, String idLoaiThit, String idXuatXu, String idNCC) {
+    public HopThitDomain(String id, String ma, String TenHopThit, Double GiaNhap, Double GiaBan, int SoLuongTon, Date NgayDongGoi, int HSD, String MoTa, int TrangThai, String idThit, String idloaiThit, String idXuatXu, String idNCC) {
         this.id = id;
         this.ma = ma;
         this.TenHopThit = TenHopThit;
@@ -46,9 +42,12 @@ public class HopThitView {
         this.MoTa = MoTa;
         this.TrangThai = TrangThai;
         this.idThit = idThit;
-        this.idLoaiThit = idLoaiThit;
+        this.idloaiThit = idloaiThit;
         this.idXuatXu = idXuatXu;
+
         this.idNCC = idNCC;
+        
+        
     }
 
     public String getId() {
@@ -139,12 +138,12 @@ public class HopThitView {
         this.idThit = idThit;
     }
 
-    public String getIdLoaiThit() {
-        return idLoaiThit;
+    public String getIdloaiThit() {
+        return idloaiThit;
     }
 
-    public void setIdLoaiThit(String idLoaiThit) {
-        this.idLoaiThit = idLoaiThit;
+    public void setIdloaiThit(String idloaiThit) {
+        this.idloaiThit = idloaiThit;
     }
 
     public String getIdXuatXu() {
@@ -162,27 +161,14 @@ public class HopThitView {
     public void setIdNCC(String idNCC) {
         this.idNCC = idNCC;
     }
-
-    public ArrayList<HopThitView> getHt() {
-        return ht;
-    }
-
-    public void setHt(ArrayList<HopThitView> ht) {
-        this.ht = ht;
-    }
+    
 
     
 
     
     
-    public HopThitView getHopThitID(String ma){
-        for (HopThitView x : ht) {
-            if (x.getId().equalsIgnoreCase(ma)) {
-                return  x; 
-            }
-        }
-        return null;
-    }
     
+
+   
     
 }
