@@ -4,12 +4,16 @@
  */
 package View;
 
+import DomainModels.TaiKhoanModel;
+import Repository.DangNhapRepository;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author sangh
  */
 public class LoginForm extends javax.swing.JFrame {
-
+    private DangNhapRepository impl = new DangNhapRepository();
     /**
      * Creates new form LoginForm
      */
@@ -33,16 +37,18 @@ public class LoginForm extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
+        txtUser = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jPanel7 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        txtPass = new javax.swing.JPasswordField();
         jPanel8 = new javax.swing.JPanel();
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
         jPanel9 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
+        txtError = new javax.swing.JTextField();
+        txtLoi = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
 
@@ -93,7 +99,18 @@ public class LoginForm extends javax.swing.JFrame {
 
         jPanel6.setPreferredSize(new java.awt.Dimension(300, 50));
         jPanel6.setLayout(new java.awt.BorderLayout(4, 4));
-        jPanel6.add(jTextField1, java.awt.BorderLayout.CENTER);
+
+        txtUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUserActionPerformed(evt);
+            }
+        });
+        txtUser.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtUserKeyReleased(evt);
+            }
+        });
+        jPanel6.add(txtUser, java.awt.BorderLayout.CENTER);
 
         jLabel2.setText("Username:");
         jPanel6.add(jLabel2, java.awt.BorderLayout.PAGE_START);
@@ -105,7 +122,13 @@ public class LoginForm extends javax.swing.JFrame {
 
         jLabel3.setText("Password:");
         jPanel7.add(jLabel3, java.awt.BorderLayout.PAGE_START);
-        jPanel7.add(jPasswordField1, java.awt.BorderLayout.CENTER);
+
+        txtPass.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtPassKeyReleased(evt);
+            }
+        });
+        jPanel7.add(txtPass, java.awt.BorderLayout.CENTER);
 
         jPanel5.add(jPanel7);
 
@@ -134,20 +157,34 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
 
+        txtError.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtErrorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
         jPanel9.setLayout(jPanel9Layout);
         jPanel9Layout.setHorizontalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtLoi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel9Layout.createSequentialGroup()
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(65, 65, 65))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtError, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtLoi))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel9);
@@ -157,8 +194,6 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 430));
         jPanel2.setLayout(new java.awt.BorderLayout());
-
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\sangh\\Documents\\Group5_DA1\\DuAn1_Group5\\src\\icons\\D.png")); // NOI18N
         jPanel2.add(jLabel6, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -172,7 +207,54 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        String user = txtUser.getText();
+        String pass = txtPass.getText();
+        TaiKhoanModel tk = impl.dangNhap(user, pass);
+        try {
+            if (user.equalsIgnoreCase(tk.getUsername()) && pass.equalsIgnoreCase(tk.getPassWorld()) && tk.getChucVu().equalsIgnoreCase("nv")) {
+                this.dispose();
+                FormNhanVien v = new FormNhanVien();
+                v.setVisible(true);
+            } else if (user.equalsIgnoreCase(tk.getUsername()) && pass.equalsIgnoreCase(tk.getPassWorld()) && tk.getChucVu().equalsIgnoreCase("ql")) {
+                this.dispose();
+                FormNhanVien q = new FormNhanVien();
+                q.setVisible(true);
+            }
+        } catch (Exception e) {
+            String txt = "Lỗi đăng nhập! Tài khoản hoặc mật khẩu không chính xác.";
+    JOptionPane.showMessageDialog(this, txt);
+        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void txtErrorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtErrorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtErrorActionPerformed
+
+    private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_txtUserActionPerformed
+
+    private void txtUserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtUserKeyReleased
+        // TODO add your handling code here:
+        if (!txtUser.getText().isEmpty() || !txtPass.getText().isEmpty()) {
+            txtError.setText("");
+        }
+        if (txtPass.getText().isEmpty()) {
+            txtLoi.setText("Không được để trống");
+        }
+    }//GEN-LAST:event_txtUserKeyReleased
+
+    private void txtPassKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPassKeyReleased
+        // TODO add your handling code here:
+        if (!txtUser.getText().isEmpty() || !txtPass.getText().isEmpty()) {
+            txtError.setText("");
+        }
+        if (txtPass.getText().isEmpty()) {
+            txtLoi.setText("Không được để trống");
+        }
+    }//GEN-LAST:event_txtPassKeyReleased
 
     /**
      * @param args the command line arguments
@@ -227,7 +309,9 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtError;
+    private javax.swing.JLabel txtLoi;
+    private javax.swing.JPasswordField txtPass;
+    private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables
 }
