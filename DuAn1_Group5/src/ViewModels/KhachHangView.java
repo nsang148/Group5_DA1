@@ -76,7 +76,7 @@ public class KhachHangView extends javax.swing.JFrame {
         }
         khachHang.setGhiChu(txtGhiChu.getText());
 //        txtSLM.setText(String.valueOf(khachHang.getSoLanMua()));
-        khachHang.setSoLanMua(Integer.parseInt(txtSLM.getText()));
+//        khachHang.setSoLanMua(Integer.parseInt(txtSLM.getText()));
 
        
     return khachHang;
@@ -111,7 +111,7 @@ public class KhachHangView extends javax.swing.JFrame {
             rdoKHKTT.setSelected(true);
         }
     txtGhiChu.setText(khachHang.getGhiChu());
-    txtSLM.setText(String.valueOf(khachHang.getSoLanMua()));
+//    txtSLM.setText(String.valueOf(khachHang.getSoLanMua()));
    
     }
     /**

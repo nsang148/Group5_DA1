@@ -23,13 +23,21 @@ public class KhachHangServiceImpl implements KhachHangService{
 
     @Override
     public String add(KhachHangModel khachHang) {
+        if(khachHang.getMa().isEmpty()||khachHang.getSdt().isEmpty()||khachHang.getDiaChi().isEmpty()||khachHang.getHoTen().isEmpty()){
+            return "Dữ liệu còn trống!";
+        }
+        KhachHangModel ma = repo.checkTrung(khachHang.getMa());
+        if (ma != null) {
+            return "Mã SP đã tồn tại!";
+        }
         boolean add = repo.add(khachHang);
         if (add) {
-            return "thêm thành công";
+            return "Thêm thành công";
         } else {
             return "Thêm thất bại";
         }
     }
+    
 
     @Override
     public String delete(String ma) {
