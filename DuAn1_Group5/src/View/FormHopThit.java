@@ -30,6 +30,7 @@ import javax.swing.table.DefaultTableModel;
  * @author proxc
  */
 public class FormHopThit extends javax.swing.JFrame {
+
     HopThitView htv = new HopThitView();
     private HopThitServices service = new HopThitServices();
     private CardLayout cardLayout;
@@ -39,6 +40,7 @@ public class FormHopThit extends javax.swing.JFrame {
      */
     public FormHopThit() {
         initComponents();
+        this.setLocationRelativeTo(null);
         cardLayout = (CardLayout) pnlRight.getLayout();
 
         if (OSUtils.getOSType() == OSUtils.OSType.MacOS) {
@@ -79,8 +81,8 @@ public class FormHopThit extends javax.swing.JFrame {
         }
         this.taiDuLieu();
     }
-    
-    private void taiDuLieu(){
+
+    private void taiDuLieu() {
         DefaultTableModel model = (DefaultTableModel) this.tblHopThit.getModel();
         model.setRowCount(0);
         ArrayList<HopThitView> list = (ArrayList<HopThitView>) this.service.getal();
@@ -943,8 +945,10 @@ public class FormHopThit extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
-        cardLayout.show(pnlRight, "card2");
-
+//        cardLayout.show(pnlRight, "card2");
+        Home homeForAd = new Home();
+        homeForAd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_banHangMousePressed
 
     private void btn_hoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hoaDonMousePressed
@@ -964,6 +968,10 @@ public class FormHopThit extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
+
+        FormHoaDon hd = new FormHoaDon();
+        hd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_hoaDonMousePressed
 
     private void btn_nhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_nhanVienMousePressed
@@ -984,6 +992,9 @@ public class FormHopThit extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
+        FormNhanVien nv = new FormNhanVien();
+        nv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_nhanVienMousePressed
 
     private void btn_thongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_thongKeMousePressed
@@ -1003,6 +1014,10 @@ public class FormHopThit extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
+
+        FormThongKe tk = new FormThongKe();
+        tk.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_thongKeMousePressed
 
     private void btn_hopThitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hopThitMousePressed
@@ -1023,7 +1038,10 @@ public class FormHopThit extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
-        cardLayout.show(pnlRight, "card1");
+//        cardLayout.show(pnlRight, "card1");
+        FormHopThit ht = new FormHopThit();
+        ht.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_hopThitMousePressed
 
 
@@ -1081,6 +1099,10 @@ public class FormHopThit extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(true);
         ind_khachHang.setOpaque(false);
+
+        FormGiamGia gg = new FormGiamGia();
+        gg.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_giamGiaMousePressed
 
     private void btn_khachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_khachHangMousePressed
@@ -1100,6 +1122,10 @@ public class FormHopThit extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(true);
+
+        FormKhachHang kH = new FormKhachHang();
+        kH.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_khachHangMousePressed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -1115,7 +1141,7 @@ public class FormHopThit extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnaddThitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnaddThitActionPerformed
-        
+
     }//GEN-LAST:event_btnaddThitActionPerformed
 
     // set and reset color

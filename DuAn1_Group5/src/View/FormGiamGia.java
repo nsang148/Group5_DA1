@@ -29,6 +29,7 @@ import net.sf.jasperreports.components.table.fill.FillTable;
  * @author proxc
  */
 public class FormGiamGia extends javax.swing.JFrame {
+
     private QuanLyGiamGia QLGG = new QuanLyGiamGia();
     private DefaultTableModel dtm = new DefaultTableModel();
     private QuanLyGiamGiaService service = new QuanLyGiamGiaServiceImpl();
@@ -41,6 +42,7 @@ public class FormGiamGia extends javax.swing.JFrame {
      */
     public FormGiamGia() {
         initComponents();
+        this.setLocationRelativeTo(null);
         dtm = (DefaultTableModel) tbl_GiamGia.getModel();
         listgg = service.getList();
         cardLayout = (CardLayout) pnlRight.getLayout();
@@ -82,16 +84,15 @@ public class FormGiamGia extends javax.swing.JFrame {
 
         }
     }
-         private void loaddata(List<QuanLyGiamGia> listgg){
-         dtm.setRowCount(0);
-         for(QuanLyGiamGia qlgg :listgg){
-             dtm.addRow(qlgg.toDataRow());
-         }
-         }
-         
-         
-         
-             private QuanLyGiamGia getDuLieu() {
+
+    private void loaddata(List<QuanLyGiamGia> listgg) {
+        dtm.setRowCount(0);
+        for (QuanLyGiamGia qlgg : listgg) {
+            dtm.addRow(qlgg.toDataRow());
+        }
+    }
+
+    private QuanLyGiamGia getDuLieu() {
         QuanLyGiamGia qlgg = new QuanLyGiamGia();
         qlgg.setMa(txt_id.getText());
         qlgg.setTen(txt_Name.getText());
@@ -104,7 +105,7 @@ public class FormGiamGia extends javax.swing.JFrame {
         } else {
             qlgg.SetTrangThai(0);
         }
-        
+
         if (rdo_stop.isSelected()) {
             qlgg.setTrangThai(0);
         } else {
@@ -112,21 +113,24 @@ public class FormGiamGia extends javax.swing.JFrame {
         }
         ;
         return qlgg;
-    }    
-    private void filldata(int index){
-    QuanLyGiamGia gg = listgg .get(index);
-    txt_id.setText(gg.getMa());
-    txt_Name.setText(gg.getTen());
-    JD_DateStart.setDate(gg.getNgayBatDau());
-    JD_DateEnd.setDate(gg.getNgayKetThuc());
-    txt_Percent.setText(String.valueOf(gg.getMucPhanTramGiamGia()));
-    Txt_DK.setText(gg.getDieuKienGiamGia());
-        if (gg.getTrangThai()==0) {
-            rdo_stop.setSelected(true);
-        }else{rdo_running.setSelected(true);
-    
-}
     }
+
+    private void filldata(int index) {
+        QuanLyGiamGia gg = listgg.get(index);
+        txt_id.setText(gg.getMa());
+        txt_Name.setText(gg.getTen());
+        JD_DateStart.setDate(gg.getNgayBatDau());
+        JD_DateEnd.setDate(gg.getNgayKetThuc());
+        txt_Percent.setText(String.valueOf(gg.getMucPhanTramGiamGia()));
+        Txt_DK.setText(gg.getDieuKienGiamGia());
+        if (gg.getTrangThai() == 0) {
+            rdo_stop.setSelected(true);
+        } else {
+            rdo_running.setSelected(true);
+
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -548,6 +552,8 @@ public class FormGiamGia extends javax.swing.JFrame {
 
         pnlRight.setLayout(new java.awt.CardLayout());
 
+        pnlDataCards.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         thongtin.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giảm Giá", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(255, 0, 50))); // NOI18N
         thongtin.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
@@ -647,6 +653,9 @@ public class FormGiamGia extends javax.swing.JFrame {
                 .addContainerGap(49, Short.MAX_VALUE))
         );
 
+        pnlDataCards.add(thongtin, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 6, 953, -1));
+        thongtin.getAccessibleContext().setAccessibleName("");
+
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chức Năng", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(255, 0, 51))); // NOI18N
 
         btn_xoa.setText("xóa");
@@ -743,6 +752,8 @@ public class FormGiamGia extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        pnlDataCards.add(jLayeredPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 297, 953, -1));
+
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin giảm giá", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(255, 0, 0))); // NOI18N
 
         tbl_GiamGia.setModel(new javax.swing.table.DefaultTableModel(
@@ -787,31 +798,7 @@ public class FormGiamGia extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
-        javax.swing.GroupLayout pnlDataCardsLayout = new javax.swing.GroupLayout(pnlDataCards);
-        pnlDataCards.setLayout(pnlDataCardsLayout);
-        pnlDataCardsLayout.setHorizontalGroup(
-            pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDataCardsLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLayeredPane1)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(thongtin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        pnlDataCardsLayout.setVerticalGroup(
-            pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDataCardsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(thongtin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
-        );
-
-        thongtin.getAccessibleContext().setAccessibleName("");
+        pnlDataCards.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 386, 953, -1));
 
         pnlRight.add(pnlDataCards, "card1");
 
@@ -863,8 +850,10 @@ public class FormGiamGia extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
-        cardLayout.show(pnlRight, "card2");
-
+//        cardLayout.show(pnlRight, "card2");
+        Home homeForAd = new Home();
+        homeForAd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_banHangMousePressed
 
     private void btn_hoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hoaDonMousePressed
@@ -884,6 +873,10 @@ public class FormGiamGia extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
+
+        FormHoaDon hd = new FormHoaDon();
+        hd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_hoaDonMousePressed
 
     private void btn_nhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_nhanVienMousePressed
@@ -904,6 +897,9 @@ public class FormGiamGia extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
+        FormNhanVien nv = new FormNhanVien();
+        nv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_nhanVienMousePressed
 
     private void btn_thongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_thongKeMousePressed
@@ -923,6 +919,10 @@ public class FormGiamGia extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
+
+        FormThongKe tk = new FormThongKe();
+        tk.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_thongKeMousePressed
 
     private void btn_hopThitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hopThitMousePressed
@@ -943,7 +943,10 @@ public class FormGiamGia extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
-        cardLayout.show(pnlRight, "card1");
+//        cardLayout.show(pnlRight, "card1");
+        FormHopThit ht = new FormHopThit();
+        ht.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_hopThitMousePressed
 
 
@@ -1001,6 +1004,10 @@ public class FormGiamGia extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(true);
         ind_khachHang.setOpaque(false);
+
+        FormGiamGia gg = new FormGiamGia();
+        gg.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_giamGiaMousePressed
 
     private void btn_khachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_khachHangMousePressed
@@ -1020,6 +1027,10 @@ public class FormGiamGia extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(true);
+
+        FormKhachHang kH = new FormKhachHang();
+        kH.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_khachHangMousePressed
 
     private void rdo_runningActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdo_runningActionPerformed
@@ -1029,21 +1040,21 @@ public class FormGiamGia extends javax.swing.JFrame {
     private void btn_xoaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_xoaMouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, service.delete(txt_id.getText()));
-        listgg=service.getList();
+        listgg = service.getList();
         loaddata(listgg);
     }//GEN-LAST:event_btn_xoaMouseClicked
 
     private void btn_suaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_suaMouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, service.update(getDuLieu(), txt_id.getText()));
-        listgg=service.getList();
+        listgg = service.getList();
         loaddata(listgg);
     }//GEN-LAST:event_btn_suaMouseClicked
 
     private void btn_themMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_themMouseClicked
         // TODO add your handling code here:
         JOptionPane.showMessageDialog(this, service.add(getDuLieu()));
-        listgg=service.getList();
+        listgg = service.getList();
         loaddata(listgg);
     }//GEN-LAST:event_btn_themMouseClicked
 

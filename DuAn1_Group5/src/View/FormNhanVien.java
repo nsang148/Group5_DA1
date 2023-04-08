@@ -45,6 +45,7 @@ public class FormNhanVien extends javax.swing.JFrame {
      */
     public FormNhanVien() {
         initComponents();
+        this.setLocationRelativeTo(null);
         cardLayout = (CardLayout) pnlRight.getLayout();
 
         if (OSUtils.getOSType() == OSUtils.OSType.MacOS) {
@@ -91,7 +92,7 @@ public class FormNhanVien extends javax.swing.JFrame {
         nhanVienService = new NhanVienServiceImpl();
         listNv = nhanVienService.getList();
         fillToTable(listNv);
-        
+
     }
 
     /**
@@ -848,13 +849,14 @@ public class FormNhanVien extends javax.swing.JFrame {
         buttonGroup.add(RDONam);
         buttonGroup.add(RDONu);
     }
-    private void btg1(){
+
+    private void btg1() {
         ButtonGroup buttonGroup1 = new ButtonGroup();
         buttonGroup1.add(RDODaNghiViec);
         buttonGroup1.add(rdoDANGLAM);
     }
-    
-      private void fillToTable(List<NhanVienModel> list) {
+
+    private void fillToTable(List<NhanVienModel> list) {
         defaultTableModel.setRowCount(0);
         System.out.println(list);
         if (!list.isEmpty()) {
@@ -867,7 +869,7 @@ public class FormNhanVien extends javax.swing.JFrame {
                 data[4] = list.get(i).getDiaChi();
                 data[5] = list.get(i).getSdt();
                 data[6] = list.get(i).getChucVu();
-                if (list.get(i).getTrangThai()==1) {
+                if (list.get(i).getTrangThai() == 1) {
                     data[7] = "Đang làm việc";
                 } else {
                     data[7] = "Đã nghỉ việc";
@@ -879,7 +881,8 @@ public class FormNhanVien extends javax.swing.JFrame {
             tableNhanVien.setModel(defaultTableModel);
         }
     }
-      private NhanVienModel getData() {
+
+    private NhanVienModel getData() {
         SimpleDateFormat dinhDang = new SimpleDateFormat("yyyy-MM-dd");
         String ngay = dinhDang.format(txtNgaySinh.getDate());
 
@@ -907,7 +910,8 @@ public class FormNhanVien extends javax.swing.JFrame {
 
         return nv;
     }
-      private void display() {
+
+    private void display() {
 
         int row = tableNhanVien.getSelectedRow();
         try {
@@ -937,7 +941,8 @@ public class FormNhanVien extends javax.swing.JFrame {
             RDODaNghiViec.setSelected(true);
         }
     }
-       private void clearFormData() {
+
+    private void clearFormData() {
         txtMaNV.setText("");
         txtTENNV.setText("");
         txtNgaySinh.setCalendar(null);
@@ -965,8 +970,10 @@ public class FormNhanVien extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
-        cardLayout.show(pnlRight, "card2");
-
+//        cardLayout.show(pnlRight, "card2");
+        Home homeForAd = new Home();
+        homeForAd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_banHangMousePressed
 
     private void btn_hoaDonMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hoaDonMousePressed
@@ -986,6 +993,10 @@ public class FormNhanVien extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
+
+        FormHoaDon hd = new FormHoaDon();
+        hd.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_hoaDonMousePressed
 
     private void btn_nhanVienMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_nhanVienMousePressed
@@ -1006,6 +1017,9 @@ public class FormNhanVien extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
+        FormNhanVien nv = new FormNhanVien();
+        nv.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_nhanVienMousePressed
 
     private void btn_thongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_thongKeMousePressed
@@ -1025,6 +1039,10 @@ public class FormNhanVien extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
+
+        FormThongKe tk = new FormThongKe();
+        tk.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_thongKeMousePressed
 
     private void btn_hopThitMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_hopThitMousePressed
@@ -1045,7 +1063,10 @@ public class FormNhanVien extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
-        cardLayout.show(pnlRight, "card1");
+//        cardLayout.show(pnlRight, "card1");
+        FormHopThit ht = new FormHopThit();
+        ht.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_hopThitMousePressed
 
 
@@ -1103,6 +1124,10 @@ public class FormNhanVien extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(true);
         ind_khachHang.setOpaque(false);
+
+        FormGiamGia gg = new FormGiamGia();
+        gg.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_giamGiaMousePressed
 
     private void btn_khachHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_khachHangMousePressed
@@ -1122,10 +1147,14 @@ public class FormNhanVien extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(true);
+
+        FormKhachHang kH = new FormKhachHang();
+        kH.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_btn_khachHangMousePressed
 
     private void BTADDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTADDActionPerformed
-    if (txtMaNV.getText().equals("")) {
+        if (txtMaNV.getText().equals("")) {
             JOptionPane.showMessageDialog(this, "Mã nhân viên không để trống.");
         } else {
             if (txtTENNV.getText().equals("")) {
@@ -1141,10 +1170,10 @@ public class FormNhanVien extends javax.swing.JFrame {
                             JOptionPane.showMessageDialog(this, "Số điện thoại không để trống.");
                         } else {
                             if (txtDiachi.getText().equals("")) {
-                                    JOptionPane.showMessageDialog(this, "Địa chỉ không để trống.");
+                                JOptionPane.showMessageDialog(this, "Địa chỉ không để trống.");
                             } else {
                                 if (!rdoDANGLAM.isSelected() && !RDODaNghiViec.isSelected()) {
-                                JOptionPane.showMessageDialog(this, "Tình trạng không được để trống");
+                                    JOptionPane.showMessageDialog(this, "Tình trạng không được để trống");
                                 } else {
                                     nhanVienService.insert(getData());
                                     List<NhanVienModel> listAdd = nhanVienService.getList();
@@ -1164,7 +1193,7 @@ public class FormNhanVien extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn khách hàng để sửa");
         } else {
             String maNv = txtMaNV.getText();
-            String mess = nhanVienService.update(getData(),maNv);
+            String mess = nhanVienService.update(getData(), maNv);
             JOptionPane.showMessageDialog(this, mess);
             clearFormData();
             List<NhanVienModel> listUp = nhanVienService.getList();
@@ -1173,12 +1202,12 @@ public class FormNhanVien extends javax.swing.JFrame {
     }//GEN-LAST:event_btUPDATEActionPerformed
 
     private void BTDELETEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTDELETEActionPerformed
-        DefaultTableModel tableModel =(DefaultTableModel) tableNhanVien.getModel();
+        DefaultTableModel tableModel = (DefaultTableModel) tableNhanVien.getModel();
         tableModel.setRowCount(0);
         List<NhanVienModel> list = nhanVienService.sortListNhanVien();
         for (NhanVienModel nv : list) {
             tableModel.addRow(new Object[]{
-                nv.getMa(),nv.getHoTen(),nv.getGioiTinh(),nv.getNgaySinh(),nv.getDiaChi(),nv.getSdt(),nv.getChucVu(),nv.getTrangThai()
+                nv.getMa(), nv.getHoTen(), nv.getGioiTinh(), nv.getNgaySinh(), nv.getDiaChi(), nv.getSdt(), nv.getChucVu(), nv.getTrangThai()
             });
         }
     }//GEN-LAST:event_BTDELETEActionPerformed

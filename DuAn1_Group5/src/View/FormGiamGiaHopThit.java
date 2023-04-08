@@ -19,14 +19,14 @@ import javax.swing.border.LineBorder;
  *
  * @author proxc
  */
-public class FormGiamGia extends javax.swing.JFrame {
+public class FormGiamGiaHopThit extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
 
     /**
      * Creates new form Home20
      */
-    public FormGiamGia() {
+    public FormGiamGiaHopThit() {
         initComponents();
         cardLayout = (CardLayout) pnlRight.getLayout();
 
@@ -609,10 +609,10 @@ public class FormGiamGia extends javax.swing.JFrame {
 
 
     private void lblMaximizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMaximizeMousePressed
-        if (FormGiamGia.this.getExtendedState() == MAXIMIZED_BOTH) {
-            FormGiamGia.this.setExtendedState(JFrame.NORMAL);
+        if (FormGiamGiaHopThit.this.getExtendedState() == MAXIMIZED_BOTH) {
+            FormGiamGiaHopThit.this.setExtendedState(JFrame.NORMAL);
         } else {
-            FormGiamGia.this.setExtendedState(MAXIMIZED_BOTH);
+            FormGiamGiaHopThit.this.setExtendedState(MAXIMIZED_BOTH);
         }
     }//GEN-LAST:event_lblMaximizeMousePressed
 
@@ -621,7 +621,7 @@ public class FormGiamGia extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCloseMousePressed
 
     private void lblMinimizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMousePressed
-        FormGiamGia.this.setState(Frame.ICONIFIED);
+        FormGiamGiaHopThit.this.setState(Frame.ICONIFIED);
     }//GEN-LAST:event_lblMinimizeMousePressed
 
     private void pnlTopMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMousePressed
@@ -637,10 +637,10 @@ public class FormGiamGia extends javax.swing.JFrame {
 
     private void pnlTopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMouseClicked
         if (evt.getClickCount() == 2 && !evt.isConsumed()) {
-            if (FormGiamGia.this.getExtendedState() == MAXIMIZED_BOTH) {
-                FormGiamGia.this.setExtendedState(JFrame.NORMAL);
+            if (FormGiamGiaHopThit.this.getExtendedState() == MAXIMIZED_BOTH) {
+                FormGiamGiaHopThit.this.setExtendedState(JFrame.NORMAL);
             } else {
-                FormGiamGia.this.setExtendedState(MAXIMIZED_BOTH);
+                FormGiamGiaHopThit.this.setExtendedState(MAXIMIZED_BOTH);
             }
         }
     }//GEN-LAST:event_pnlTopMouseClicked

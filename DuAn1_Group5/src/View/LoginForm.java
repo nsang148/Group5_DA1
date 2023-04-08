@@ -19,6 +19,7 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -194,6 +195,8 @@ public class LoginForm extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(400, 430));
         jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/D.png"))); // NOI18N
         jPanel2.add(jLabel6, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel2, java.awt.BorderLayout.CENTER);

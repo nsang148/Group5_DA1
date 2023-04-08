@@ -19,14 +19,14 @@ import javax.swing.border.LineBorder;
  *
  * @author proxc
  */
-public class Home extends javax.swing.JFrame {
+public class HomeForNv extends javax.swing.JFrame {
 
     private CardLayout cardLayout;
 
     /**
      * Creates new form Home20
      */
-    public Home() {
+    public HomeForNv() {
         initComponents();
         this.setLocationRelativeTo(null);
         cardLayout = (CardLayout) pnlRight.getLayout();
@@ -849,7 +849,7 @@ public class Home extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 181, Short.MAX_VALUE))
+                        .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, 181, Short.MAX_VALUE))
                     .addGroup(pnlDataCardsLayout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel4)
@@ -1005,10 +1005,10 @@ public class Home extends javax.swing.JFrame {
 
 
     private void lblMaximizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMaximizeMousePressed
-        if (Home.this.getExtendedState() == MAXIMIZED_BOTH) {
-            Home.this.setExtendedState(JFrame.NORMAL);
+        if (HomeForNv.this.getExtendedState() == MAXIMIZED_BOTH) {
+            HomeForNv.this.setExtendedState(JFrame.NORMAL);
         } else {
-            Home.this.setExtendedState(MAXIMIZED_BOTH);
+            HomeForNv.this.setExtendedState(MAXIMIZED_BOTH);
         }
     }//GEN-LAST:event_lblMaximizeMousePressed
 
@@ -1017,7 +1017,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_lblCloseMousePressed
 
     private void lblMinimizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMousePressed
-        Home.this.setState(Frame.ICONIFIED);
+        HomeForNv.this.setState(Frame.ICONIFIED);
     }//GEN-LAST:event_lblMinimizeMousePressed
 
     private void pnlTopMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMousePressed
@@ -1033,10 +1033,10 @@ public class Home extends javax.swing.JFrame {
 
     private void pnlTopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMouseClicked
         if (evt.getClickCount() == 2 && !evt.isConsumed()) {
-            if (Home.this.getExtendedState() == MAXIMIZED_BOTH) {
-                Home.this.setExtendedState(JFrame.NORMAL);
+            if (HomeForNv.this.getExtendedState() == MAXIMIZED_BOTH) {
+                HomeForNv.this.setExtendedState(JFrame.NORMAL);
             } else {
-                Home.this.setExtendedState(MAXIMIZED_BOTH);
+                HomeForNv.this.setExtendedState(MAXIMIZED_BOTH);
             }
         }
     }//GEN-LAST:event_pnlTopMouseClicked
@@ -1319,21 +1319,23 @@ public class Home extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeForNv.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeForNv.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeForNv.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Home.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(HomeForNv.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Home().setVisible(true);
+                new HomeForNv().setVisible(true);
             }
         });
     }
