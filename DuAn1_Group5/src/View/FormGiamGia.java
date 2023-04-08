@@ -5,6 +5,7 @@
  */
 package View;
 
+import DomainModels.GiamGia;
 import Service.Implement.QuanLyGiamGiaServiceImpl;
 import Service.QuanLyGiamGiaService;
 import ViewModels.QuanLyGiamGia;
@@ -21,6 +22,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import net.sf.jasperreports.components.table.fill.FillTable;
 
 /**
  *
@@ -190,6 +192,8 @@ public class FormGiamGia extends javax.swing.JFrame {
         btn_sua = new javax.swing.JButton();
         btn_them = new javax.swing.JButton();
         btn_show = new javax.swing.JButton();
+        txtsearch = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tbl_GiamGia = new javax.swing.JTable();
@@ -537,7 +541,7 @@ public class FormGiamGia extends javax.swing.JFrame {
                 .addComponent(btn_giamGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_khachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(145, Short.MAX_VALUE))
+                .addContainerGap(148, Short.MAX_VALUE))
         );
 
         pnlParent.add(sidepane, java.awt.BorderLayout.LINE_START);
@@ -686,17 +690,36 @@ public class FormGiamGia extends javax.swing.JFrame {
             }
         });
 
+        txtsearch.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtsearchCaretUpdate(evt);
+            }
+        });
+        txtsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtsearchActionPerformed(evt);
+            }
+        });
+
+        jLabel19.setText("tìm kiếm bằng mã");
+
         jLayeredPane1.setLayer(btn_xoa, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(btn_sua, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(btn_them, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jLayeredPane1.setLayer(btn_show, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(txtsearch, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jLayeredPane1.setLayer(jLabel19, javax.swing.JLayeredPane.DEFAULT_LAYER);
 
         javax.swing.GroupLayout jLayeredPane1Layout = new javax.swing.GroupLayout(jLayeredPane1);
         jLayeredPane1.setLayout(jLayeredPane1Layout);
         jLayeredPane1Layout.setHorizontalGroup(
             jLayeredPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jLayeredPane1Layout.createSequentialGroup()
-                .addContainerGap(572, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 273, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_show, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -714,7 +737,9 @@ public class FormGiamGia extends javax.swing.JFrame {
                     .addComponent(btn_show, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_them, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn_xoa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_sua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btn_sua, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -769,28 +794,21 @@ public class FormGiamGia extends javax.swing.JFrame {
             .addGroup(pnlDataCardsLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addGroup(pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLayeredPane1)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(thongtin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
-            .addGroup(pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlDataCardsLayout.createSequentialGroup()
-                    .addGap(23, 23, 23)
-                    .addComponent(jLayeredPane1)
-                    .addContainerGap()))
         );
         pnlDataCardsLayout.setVerticalGroup(
             pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDataCardsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(thongtin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(40, 40, 40))
-            .addGroup(pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(pnlDataCardsLayout.createSequentialGroup()
-                    .addGap(272, 272, 272)
-                    .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(260, Short.MAX_VALUE)))
         );
 
         thongtin.getAccessibleContext().setAccessibleName("");
@@ -805,7 +823,7 @@ public class FormGiamGia extends javax.swing.JFrame {
         );
         pnlTypographyLayout.setVerticalGroup(
             pnlTypographyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 626, Short.MAX_VALUE)
+            .addGap(0, 629, Short.MAX_VALUE)
         );
 
         pnlRight.add(pnlTypography, "card2");
@@ -1045,6 +1063,17 @@ public class FormGiamGia extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tbl_GiamGiaMouseClicked
 
+    private void txtsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtsearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtsearchActionPerformed
+
+    private void txtsearchCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtsearchCaretUpdate
+        // TODO add your handling code here:
+        String ma = txtsearch.getText();
+        List<QuanLyGiamGia> ketQua = service.search(ma);
+        loaddata(ketQua);
+    }//GEN-LAST:event_txtsearchCaretUpdate
+
     // set and reset color
     void setColor(JPanel panel) {
         panel.setBackground(new Color(255, 51, 51));
@@ -1124,6 +1153,7 @@ public class FormGiamGia extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -1153,5 +1183,6 @@ public class FormGiamGia extends javax.swing.JFrame {
     private javax.swing.JTextField txt_Name;
     private javax.swing.JTextField txt_Percent;
     private javax.swing.JTextField txt_id;
+    private javax.swing.JTextField txtsearch;
     // End of variables declaration//GEN-END:variables
 }

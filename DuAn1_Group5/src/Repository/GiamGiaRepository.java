@@ -81,6 +81,24 @@ public class GiamGiaRepository {
         return check > 0;
 
     }    
-    
+    public ArrayList<GiamGia> timKiem(String ma) {
+        ArrayList<GiamGia> listgg = new ArrayList<>();
+        String sql = "select * FROM [dbo].[GiamGia] WHERE Ma = ?";
+        try (Connection con = DBContext.getConnection();
+                PreparedStatement ps = con.prepareStatement(sql)) {
+            ps.setObject(1, ma);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                GiamGia gg = new GiamGia(rs.getString(1),rs.getString(2), rs.getString(3),rs.getDate(4),rs.getDate(5),rs.getInt(6), rs.getString(7),rs.getInt(8));
+                listgg.add(gg);
+            }
+        } catch (Exception e) {
+            e.getMessage();
+        }
+
+        return listgg;
+    }    
     
 }

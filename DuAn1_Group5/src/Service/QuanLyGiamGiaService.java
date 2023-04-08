@@ -4,6 +4,7 @@
  */
 package Service;
 
+import DomainModels.GiamGia;
 import java.util.List;
 import ViewModels.QuanLyGiamGia;
 
@@ -20,5 +21,6 @@ public interface QuanLyGiamGiaService {
     String delete(String id);
     
     String update(QuanLyGiamGia qlgg,String id);    
-
+    
+    List<QuanLyGiamGia> search(String ma);
 }

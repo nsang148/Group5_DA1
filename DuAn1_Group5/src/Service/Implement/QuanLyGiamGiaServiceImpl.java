@@ -55,5 +55,16 @@ public class QuanLyGiamGiaServiceImpl implements QuanLyGiamGiaService{
             return "Thanh cong";
         }
         return "That bai";    }
-    
+
+    @Override
+    public List<QuanLyGiamGia> search(String ma) {
+           List<GiamGia> listtk = ggr.timKiem(ma);
+                  List<QuanLyGiamGia> listqlggtk = new ArrayList<>();
+        for (GiamGia gg : listtk) {
+            listqlggtk.add(new QuanLyGiamGia(gg.getId(), gg.getMa(),gg.getTen(),gg.getNgayBatDau(),gg.getNgayKetThuc(),gg.getMucPhanTramGiamGia(),gg.getDieuKienGiamGia(),gg.getTrangThai()));
+        }
+        return listqlggtk;
+           
+    }
+
 }
