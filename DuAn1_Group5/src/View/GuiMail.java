@@ -222,12 +222,10 @@ public class GuiMail extends javax.swing.JFrame {
         String FormMailPassWord = "hieudeovui147852";
         String Subject = txtSubject.getText();
         Properties pro = new Properties();
-        
-        pro.put("mail.smtp.auth", "true");
-        pro.put("mail.smtp.starttls.enable", "true");
         pro.put("mail.smtp.host", "smtp.gmail.com");
-        pro.put("mail.smtp.port", "587");      
-        
+        pro.put("mail.smtp.port", "587");
+        pro.put("mail.smtp.auth", "true");
+        pro.put("mail.smtp.starttls.enable", "true"); //TLS
 //        pro.put("mail.smtp.ssl.protocols", "TLSv1.2");
 //        pro.put("mail.smtp.ssl.trust", "smtp.gmail.com");
          Session sess = Session.getDefaultInstance(pro, new javax.mail.Authenticator() {
@@ -239,14 +237,17 @@ public class GuiMail extends javax.swing.JFrame {
          try {
             MimeMessage message = new MimeMessage(sess);
             message.setFrom(new InternetAddress(FormEmail));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(ToEmail));
+            message.addRecipient(
+                    Message.RecipientType.TO,
+                    new InternetAddress(ToEmail));
             message.setSubject(Subject);
             message.setText(jTextArea1.getText());
             Transport.send(message);
+            JOptionPane.showMessageDialog(this, "Gửi thành công");
             File fle = new File(link);
         } catch (Exception ex) {
-            
-             System.out.println(""+ex);
+            JOptionPane.showMessageDialog(this, "Gửi thất bại");
+            System.out.println(""+ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
