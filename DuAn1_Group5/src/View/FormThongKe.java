@@ -5,6 +5,7 @@
  */
 package View;
 
+import controller.QuanLyThongKeController;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -28,6 +29,7 @@ public class FormThongKe extends javax.swing.JFrame {
      */
     public FormThongKe() {
         initComponents();
+
         this.setLocationRelativeTo(null);
         cardLayout = (CardLayout) pnlRight.getLayout();
 
@@ -65,7 +67,11 @@ public class FormThongKe extends javax.swing.JFrame {
             pnlActions.add(lblClose);
 
             pnlTitle.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 8));
-
+            
+            
+            QuanLyThongKeController controller = new QuanLyThongKeController();
+            controller.setTienTochart(JpnTK);
+            controller.setSPTochart(JpnSp);
         }
     }
 
@@ -113,6 +119,8 @@ public class FormThongKe extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         pnlRight = new javax.swing.JPanel();
         pnlDataCards = new javax.swing.JPanel();
+        JpnTK = new javax.swing.JPanel();
+        JpnSp = new javax.swing.JPanel();
         pnlTypography = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -457,22 +465,58 @@ public class FormThongKe extends javax.swing.JFrame {
                 .addComponent(btn_giamGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_khachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                .addContainerGap(156, Short.MAX_VALUE))
         );
 
         pnlParent.add(sidepane, java.awt.BorderLayout.LINE_START);
 
         pnlRight.setLayout(new java.awt.CardLayout());
 
+        pnlDataCards.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        JpnTK.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout JpnTKLayout = new javax.swing.GroupLayout(JpnTK);
+        JpnTK.setLayout(JpnTKLayout);
+        JpnTKLayout.setHorizontalGroup(
+            JpnTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 949, Short.MAX_VALUE)
+        );
+        JpnTKLayout.setVerticalGroup(
+            JpnTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 285, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout JpnSpLayout = new javax.swing.GroupLayout(JpnSp);
+        JpnSp.setLayout(JpnSpLayout);
+        JpnSpLayout.setHorizontalGroup(
+            JpnSpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JpnSpLayout.setVerticalGroup(
+            JpnSpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 285, Short.MAX_VALUE)
+        );
+
         javax.swing.GroupLayout pnlDataCardsLayout = new javax.swing.GroupLayout(pnlDataCards);
         pnlDataCards.setLayout(pnlDataCardsLayout);
         pnlDataCardsLayout.setHorizontalGroup(
             pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 981, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDataCardsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(JpnSp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JpnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         pnlDataCardsLayout.setVerticalGroup(
             pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 614, Short.MAX_VALUE)
+            .addGroup(pnlDataCardsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JpnTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(JpnSp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pnlRight.add(pnlDataCards, "card1");
@@ -485,7 +529,7 @@ public class FormThongKe extends javax.swing.JFrame {
         );
         pnlTypographyLayout.setVerticalGroup(
             pnlTypographyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 614, Short.MAX_VALUE)
+            .addGap(0, 637, Short.MAX_VALUE)
         );
 
         pnlRight.add(pnlTypography, "card2");
@@ -746,6 +790,10 @@ public class FormThongKe extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -756,6 +804,8 @@ public class FormThongKe extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JpnSp;
+    private javax.swing.JPanel JpnTK;
     private javax.swing.JPanel btn_banHang;
     private javax.swing.JPanel btn_giamGia;
     private javax.swing.JPanel btn_hoaDon;
