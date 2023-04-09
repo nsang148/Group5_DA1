@@ -9,14 +9,13 @@ import DomainModels.XuatXuDomain;
 import Repository.XuatXuRepository;
 import ViewModels.XuatXuView;
 import java.util.ArrayList;
-import Service.IXuatXuService;
 import java.util.List;
 
 /**
  *
  * @author Tus
  */
-public class XuatXuService implements IXuatXuService{
+public class XuatXuService implements Service.IXuatXuService{
     private XuatXuRepository rs = new XuatXuRepository();
 
     @Override

@@ -5,7 +5,6 @@
  */
 package Repository;
 
-import IRepository.*;
 import DomainModels.ThitDomain;
 import java.util.List;
 

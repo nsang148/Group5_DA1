@@ -8,7 +8,6 @@ package Service.Implement;
 import DomainModels.ThitDomain;
 import Repository.ThitRepository;
 import ViewModels.ThitView;
-import Service.IThitService;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +15,7 @@ import java.util.List;
  *
  * @author Tus
  */
-public class ThitService implements IThitService{
+public class ThitService implements Service.IThitService{
     private ThitRepository rs = new ThitRepository();
 
     @Override
@@ -24,29 +23,35 @@ public class ThitService implements IThitService{
         ArrayList<ThitView> ds = new ArrayList<>();
         List<ThitDomain> list = this.rs.getAll();
         for (ThitDomain x : list) {
-            ThitView view = new ThitView(x.getId(), x.getMa(), x.getTen(),x.getTheloai(), x.getTrangthai());
+            ThitView view = new ThitView(x.getId(), x.getMa(), x.getTen(), x.getTrangthai());
             ds.add(view);
         }
         return ds;
     }
 
+    public ThitView getByName(String name) {
+        ThitDomain x = rs.getByName(name);
+        ThitView view = new ThitView(x.getId(), x.getMa(), x.getTen(), x.getTrangthai());
+        return view;
+    }
+    
     @Override
     public boolean add(ThitView tv) {
-      ThitDomain domain = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(),tv.getTheloai(), tv.getTrangthai());
+      ThitDomain domain = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
         this.rs.add(domain);
         return true;
     }
 
     @Override
     public boolean update(ThitView tv) {
-       ThitDomain domain = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(),tv.getTheloai(), tv.getTrangthai());
+       ThitDomain domain = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
         this.rs.update(domain);
         return true;
     }
 
     @Override
     public boolean delete(ThitView tv) {
-        ThitDomain xxd = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(),tv.getTheloai(), tv.getTrangthai());
+        ThitDomain xxd = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
       this.rs.delete(xxd);
       return true;
     }

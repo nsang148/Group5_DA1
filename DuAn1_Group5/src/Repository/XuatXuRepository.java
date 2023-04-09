@@ -7,7 +7,6 @@ package Repository;
 
 import DomainModels.XuatXuDomain;
 import Untility.DBContext;
-import com.sun.corba.se.pept.transport.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;

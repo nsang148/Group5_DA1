@@ -12,22 +12,21 @@ import java.util.ArrayList;
  * @author Tus
  */
 public class ThitView {
+
     private String id;
     private String ma;
     private String ten;
-    private String theloai;
     private int trangthai;
-    
+
     private ArrayList<ThitView> xx = new ArrayList<>();
 
     public ThitView() {
     }
 
-    public ThitView(String id, String ma, String ten, String theloai, int trangthai) {
+    public ThitView(String id, String ma, String ten, int trangthai) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
-        this.theloai = theloai;
         this.trangthai = trangthai;
     }
 
@@ -55,14 +54,6 @@ public class ThitView {
         this.ten = ten;
     }
 
-    public String getTheloai() {
-        return theloai;
-    }
-
-    public void setTheloai(String theloai) {
-        this.theloai = theloai;
-    }
-
     public int getTrangthai() {
         return trangthai;
     }
@@ -70,7 +61,8 @@ public class ThitView {
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
     }
-    public ThitView getThitId(String ma){
+
+    public ThitView getThitId(String ma) {
         for (ThitView x : xx) {
             if (x.getId().equalsIgnoreCase(ma)) {
                 return x;
@@ -78,6 +70,5 @@ public class ThitView {
         }
         return null;
     }
-    
-    
+
 }
