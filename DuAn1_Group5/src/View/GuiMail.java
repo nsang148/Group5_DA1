@@ -216,7 +216,7 @@ public class GuiMail extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       final String username = "hieuvuive13579@gmail.com";
         final String password = "zdxnnipuwtmforgj";
-
+        String mess = jTextArea1.getText();
         String ToEmail = txtToEmail.getText();
         String FormEmail = txtFormEmail.getText();//hieuvuive13579@gamil.com
 //        String FormMailPassWord = "zdxnnipuwtmforgj";
@@ -239,24 +239,29 @@ public class GuiMail extends javax.swing.JFrame {
             message.setFrom(new InternetAddress(FormEmail));
             message.addRecipient(
                     Message.RecipientType.TO,
-                    new InternetAddress(ToEmail));
+                    new InternetAddress(ToEmail)
+            );
             message.setSubject(Subject);
             message.setText(jTextArea1.getText());
+           
+            
+            
+            MimeBodyPart contentPart = new MimeBodyPart();
+            contentPart.setContent(mess,"text/html; charset=utf-8");
+            message.setText(mess);
+            MimeBodyPart filePart = new MimeBodyPart();
+            File file = new File(link);
+            FileDataSource fds = new FileDataSource(file);
+            filePart.setDataHandler(new DataHandler(fds));
+            filePart.setFileName(file.getName());
+            MimeMultipart multipart = new MimeMultipart();
+            multipart.addBodyPart(contentPart);
+            multipart.addBodyPart(filePart);
+            message.setContent(multipart);
+            
+            
             Transport.send(message);
             JOptionPane.showMessageDialog(this, "Gửi thành công");
-//            MimeBodyPart contentPart = new MimeBodyPart();
-//            contentPart.setContent(message,"text/html; charset=utf-8");
-//            MimeBodyPart filePart = new MimeBodyPart();
-            
-            File fle = new File(link);
-//            FileDataSource fds = new FileDataSource(fle);
-//            filePart.setDataHandler(new DataHandler(fds));
-//            filePart.setFileName(fle.getName());
-//            MimeMultipart multipart = new MimeMultipart();
-//            
-//            multipart.addBodyPart(contentPart);
-//            multipart.addBodyPart(filePart);
-//            message.setContent(multipart);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Gửi thất bại");
             System.out.println(""+ex);
