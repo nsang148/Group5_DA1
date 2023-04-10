@@ -214,23 +214,23 @@ public class GuiMail extends javax.swing.JFrame {
     }//GEN-LAST:event_txtFormEmailActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-//        final String username = "hieuvuive13579@gamil.com";
-//        final String password = "hh";
+      final String username = "hieuvuive13579@gmail.com";
+        final String password = "zdxnnipuwtmforgj";
+
         String ToEmail = txtToEmail.getText();
         String FormEmail = txtFormEmail.getText();//hieuvuive13579@gamil.com
-        String FormMailPassWord = "hieudeovui147852";
+//        String FormMailPassWord = "zdxnnipuwtmforgj";
         String Subject = txtSubject.getText();
         Properties pro = new Properties();
         pro.put("mail.smtp.host", "smtp.gmail.com");
         pro.put("mail.smtp.port", "587");
         pro.put("mail.smtp.auth", "true");
         pro.put("mail.smtp.starttls.enable", "true"); //TLS
-//        pro.put("mail.smtp.ssl.protocols", "TLSv1.2");
-//        pro.put("mail.smtp.ssl.trust", "smtp.gmail.com");
+        pro.put("mail.smtp.ssl.protocols", "TLSv1.2");
+        pro.put("mail.smtp.ssl.trust", "smtp.gmail.com");
          Session sess = Session.getDefaultInstance(pro, new javax.mail.Authenticator() {
              protected PasswordAuthentication getPasswordAuthentication(){
-             return new PasswordAuthentication(FormEmail, FormMailPassWord);
+             return new PasswordAuthentication(username, password);
              
              } 
          });
@@ -244,7 +244,19 @@ public class GuiMail extends javax.swing.JFrame {
             message.setText(jTextArea1.getText());
             Transport.send(message);
             JOptionPane.showMessageDialog(this, "Gửi thành công");
+//            MimeBodyPart contentPart = new MimeBodyPart();
+//            contentPart.setContent(message,"text/html; charset=utf-8");
+//            MimeBodyPart filePart = new MimeBodyPart();
+            
             File fle = new File(link);
+//            FileDataSource fds = new FileDataSource(fle);
+//            filePart.setDataHandler(new DataHandler(fds));
+//            filePart.setFileName(fle.getName());
+//            MimeMultipart multipart = new MimeMultipart();
+//            
+//            multipart.addBodyPart(contentPart);
+//            multipart.addBodyPart(filePart);
+//            message.setContent(multipart);
         } catch (Exception ex) {
             JOptionPane.showMessageDialog(this, "Gửi thất bại");
             System.out.println(""+ex);
