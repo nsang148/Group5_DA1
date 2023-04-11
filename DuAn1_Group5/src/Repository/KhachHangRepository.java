@@ -124,10 +124,10 @@ public class KhachHangRepository {
         return check > 0;
     }
 
-    public KhachHangModel checkTrung(String manv) {
+    public KhachHangModel checkTrung(String makh) {
         String query = "sSelect Ma from KhachHang where Ma=? ";
         try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(query);) {
-            ps.setObject(1, manv);
+            ps.setObject(1, makh);
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
                 KhachHangModel sp = new KhachHangModel(rs.getString(1));

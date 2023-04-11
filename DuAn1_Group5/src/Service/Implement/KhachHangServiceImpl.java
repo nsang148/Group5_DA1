@@ -28,7 +28,7 @@ public class KhachHangServiceImpl implements KhachHangService{
         }
         KhachHangModel ma = repo.checkTrung(khachHang.getMa());
         if (ma != null) {
-            return "Mã SP đã tồn tại!";
+            return "Mã KH đã tồn tại!";
         }
         boolean add = repo.add(khachHang);
         if (add) {
@@ -57,7 +57,7 @@ public class KhachHangServiceImpl implements KhachHangService{
         }
         KhachHangModel ma = repo.checkTrung(khachHang.getMa());
         if (ma != null) {
-            return "Mã SP đã tồn tại!";
+            return "Mã KH đã tồn tại!";
         }
         boolean update = repo.updata(khachHang, id);
         if (update) {
