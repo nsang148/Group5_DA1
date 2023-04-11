@@ -1073,6 +1073,11 @@
                                   <Component id="jButton1" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnClear" alignment="0" min="-2" pref="131" max="-2" attributes="0"/>
                               </Group>
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtTimKiem" min="-2" pref="328" max="-2" attributes="0"/>
+                                  <Component id="jLabel21" min="-2" pref="167" max="-2" attributes="0"/>
+                              </Group>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
@@ -1085,12 +1090,14 @@
                                   <Component id="btnSua" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnThem" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="btnXoa" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnClear" alignment="3" max="32767" attributes="0"/>
                                   <Component id="btnThoat" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                                  <Component id="txtTimKiem" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                           </Group>
@@ -1163,6 +1170,22 @@
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThoatActionPerformed"/>
                       </Events>
+                    </Component>
+                    <Component class="javax.swing.JTextField" name="txtTimKiem">
+                      <Events>
+                        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtTimKiemKeyReleased"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JLabel" name="jLabel21">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI" size="14" style="1"/>
+                        </Property>
+                        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="0" green="0" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="T&#xec;m Ki&#x1ebf;m Theo M&#xe3;"/>
+                      </Properties>
                     </Component>
                   </SubComponents>
                 </Container>

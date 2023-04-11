@@ -52,13 +52,7 @@ public class KhachHangServiceImpl implements KhachHangService{
 
     @Override
     public String updata(KhachHangModel khachHang, String id) {
-        if(khachHang.getMa().isEmpty()||khachHang.getSdt().isEmpty()||khachHang.getDiaChi().isEmpty()||khachHang.getHoTen().isEmpty()){
-            return "Dữ liệu còn trống!";
-        }
-        KhachHangModel ma = repo.checkTrung(khachHang.getMa());
-        if (ma != null) {
-            return "Mã KH đã tồn tại!";
-        }
+        
         boolean update = repo.updata(khachHang, id);
         if (update) {
             return "Sửa thành công";
@@ -66,5 +60,14 @@ public class KhachHangServiceImpl implements KhachHangService{
             return "Sửa thất bại";
         }
     }
+
+    @Override
+    public List<KhachHangModel> searchTheoMaKH(String maKH) {
+        return repo.getAllViewKH(maKH);
+    }
+
     
+
+  
+   
 }

@@ -19,4 +19,6 @@ public interface KhachHangService {
     String delete(String ma);
     
     String updata(KhachHangModel khachHang, String id);
+    
+    List<KhachHangModel> searchTheoMaKH(String maKH);
 }

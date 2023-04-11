@@ -138,7 +138,31 @@ public class KhachHangRepository {
         }
         return null;
     }
-
+    public List<KhachHangModel> getAllViewKH(String maKh) {
+        String query = "SELECT [Ma]\n" +
+"      ,[HoTen]\n" +
+"      ,[Sdt]\n" +
+"      ,[NgaySinh]\n" +
+"      ,[DiaChi]\n" +
+"      ,[GioiTinh]\n" +
+"      ,[TrangThai]\n" +
+"      ,[GhiChu]\n" +
+"  FROM [dbo].[KhachHang] where Ma like ?";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement ps = con.prepareStatement(query);) {
+            ps.setString(1, "%" + maKh + "%");
+            ResultSet rs = ps.executeQuery();
+            List<KhachHangModel> list = new ArrayList<>();
+            while (rs.next()) {
+               KhachHangModel hd = new KhachHangModel( rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getBoolean(6), rs.getBoolean(7), rs.getString(8));
+                list.add(hd);
+            }
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+//    rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5), rs.getBoolean(6), rs.getBoolean(7), rs.getString(8)
     public static void main(String[] args) {
 //        List<KhachHangModel> getAll= new KhachHangRepository().getAll();
 //        for (KhachHangModel x : getAll) {
