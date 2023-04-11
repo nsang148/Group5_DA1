@@ -6,6 +6,7 @@
 package ViewModels;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
@@ -68,6 +69,28 @@ public class NhaCCView {
        }
        return null;
    }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 41 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final NhaCCView other = (NhaCCView) obj;
+        return Objects.equals(this.id, other.id);
+    }
     
     
     

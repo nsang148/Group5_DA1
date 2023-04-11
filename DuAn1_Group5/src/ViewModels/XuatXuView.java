@@ -6,17 +6,19 @@
 package ViewModels;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  *
  * @author Tus
  */
 public class XuatXuView {
+
     private String id;
     private String ma;
     private String ten;
     private int trangthai;
-    
+
     private ArrayList<XuatXuView> xx = new ArrayList<>();
 
     public XuatXuView() {
@@ -68,7 +70,8 @@ public class XuatXuView {
     public void setXx(ArrayList<XuatXuView> xx) {
         this.xx = xx;
     }
-    public XuatXuView getXXId(String ma){
+
+    public XuatXuView getXXId(String ma) {
         for (XuatXuView x : xx) {
             if (x.getId().equalsIgnoreCase(ma)) {
                 return x;
@@ -76,6 +79,27 @@ public class XuatXuView {
         }
         return null;
     }
-    
-        
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 53 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final XuatXuView other = (XuatXuView) obj;
+        return Objects.equals(this.id, other.id);
+    }
+
 }

@@ -7,6 +7,7 @@ package Service.Implement;
 
 import DomainModels.XuatXuDomain;
 import Repository.XuatXuRepository;
+import Service.IXuatXuService;
 import ViewModels.XuatXuView;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Tus
  */
-public class XuatXuService implements Service.IXuatXuService{
+public class XuatXuService implements IXuatXuService{
     private XuatXuRepository rs = new XuatXuRepository();
 
     @Override
@@ -29,24 +30,26 @@ public class XuatXuService implements Service.IXuatXuService{
         return ds;
     }
 
+    public XuatXuView getByName(String name) {
+        XuatXuDomain x = rs.getByName(name);
+        return new XuatXuView(x.getId(), x.getMa(), x.getNoiXX(), x.getTrangthai());
+    }
+    
     @Override
     public boolean add(XuatXuView xxv) {
         XuatXuDomain domain = new XuatXuDomain(xxv.getId(), xxv.getMa(), xxv.getTen(), xxv.getTrangthai());
-        this.rs.add(domain);
-        return true;
+        return this.rs.add(domain);
     }
 
     @Override
     public boolean update(XuatXuView xxv) {
         XuatXuDomain xuDomain = new XuatXuDomain(xxv.getId(), xxv.getMa(), xxv.getTen(), xxv.getTrangthai());
-        this.rs.update(xuDomain);
-        return true;
+        return this.rs.update(xuDomain);
     }
 
     @Override
     public boolean delete(XuatXuView xxv) {
       XuatXuDomain xxd = new XuatXuDomain(xxv.getId(), xxv.getMa(), xxv.getTen(), xxv.getTrangthai());
-      this.rs.delete(xxd);
-      return true;
+      return this.rs.delete(xxd);
     }
 }

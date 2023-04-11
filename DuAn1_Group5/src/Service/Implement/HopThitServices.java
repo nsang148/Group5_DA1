@@ -18,36 +18,38 @@ import Service.IHopThitService;
  * @author Tus
  */
 public class HopThitServices implements IHopThitService{
+    private HopThitDomain getHopThitDomain(HopThitView ht) {
+        return new HopThitDomain(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaBan(), ht.getSoLuongTon(), ht.getKhoiLuong(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdloaiThit(), ht.getIdXuatXu(), ht.getIdNCC(), ht.getGiaConLai());
+    }
+    
     private HopThitRepository rs = new HopThitRepository();
     @Override
     public List<HopThitView> getal() {
         List<HopThitView> ds = new ArrayList<>();
         List<HopThitDomain> list = this.rs.getall();
-        for (HopThitDomain x : list) {
-            HopThitDomain domain = new HopThitDomain(x.getId(),x.getMa(), x.getTenHopThit(), x.getGiaNhap(), x.getGiaBan(), x.getSoLuongTon(),x.getNgayDongGoi(),x.getHSD(), x.getMoTa(), x.getTrangThai(), x.getIdThit(),x.getIdThit(), x.getIdXuatXu(), x.getIdNCC());
+        for (HopThitDomain ht : list) {
+            HopThitView hopThitView = new HopThitView(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaBan(), ht.getSoLuongTon(), ht.getKhoiLuong(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdloaiThit(), ht.getIdXuatXu(), ht.getIdNCC(), ht.getGiaConLai());
+            ds.add(hopThitView);
         }
         return ds;
     }
 
     @Override
     public boolean add(HopThitView ht) {
-        HopThitDomain domain = new HopThitDomain(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaNhap(), ht.getGiaBan(), ht.getSoLuongTon(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdLoaiThit(), ht.getIdXuatXu(), ht.getIdNCC());
-        this.rs.add(domain);
-        return true;
+        HopThitDomain domain = getHopThitDomain(ht);
+        return this.rs.add(domain);
     }
 
     @Override
     public boolean update(HopThitView ht) {
-        HopThitDomain domain = new HopThitDomain(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaNhap(), ht.getGiaBan(), ht.getSoLuongTon(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdLoaiThit(), ht.getIdXuatXu(), ht.getIdNCC());
-        this.rs.update(domain);
-        return true;
+        HopThitDomain domain = getHopThitDomain(ht);
+        return this.rs.update(domain);
     }
 
     @Override
     public boolean delete(HopThitView ht) {
-        HopThitDomain domain = new HopThitDomain(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaNhap(), ht.getGiaBan(), ht.getSoLuongTon(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdLoaiThit(), ht.getIdXuatXu(), ht.getIdNCC());
-        this.rs.delete(domain);
-        return true;
+        HopThitDomain domain = getHopThitDomain(ht);
+        return this.rs.delete(domain);
     }
 }
 

@@ -7,6 +7,7 @@ package Service.Implement;
 
 import DomainModels.ThitDomain;
 import Repository.ThitRepository;
+import Service.IThitService;
 import ViewModels.ThitView;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,8 @@ import java.util.List;
  *
  * @author Tus
  */
-public class ThitService implements Service.IThitService{
+public class ThitService implements IThitService {
+
     private ThitRepository rs = new ThitRepository();
 
     @Override
@@ -34,25 +36,22 @@ public class ThitService implements Service.IThitService{
         ThitView view = new ThitView(x.getId(), x.getMa(), x.getTen(), x.getTrangthai());
         return view;
     }
-    
+
     @Override
     public boolean add(ThitView tv) {
-      ThitDomain domain = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
-        this.rs.add(domain);
-        return true;
+        ThitDomain domain = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
+        return this.rs.add(domain);
     }
 
     @Override
     public boolean update(ThitView tv) {
-       ThitDomain domain = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
-        this.rs.update(domain);
-        return true;
+        ThitDomain domain = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
+        return this.rs.update(domain);
     }
 
     @Override
     public boolean delete(ThitView tv) {
         ThitDomain xxd = new ThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
-      this.rs.delete(xxd);
-      return true;
+        return this.rs.delete(xxd);
     }
 }

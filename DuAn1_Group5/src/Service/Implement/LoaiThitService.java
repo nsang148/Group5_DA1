@@ -7,6 +7,7 @@ package Service.Implement;
 
 import DomainModels.LoaiThitDomain;
 import Repository.LoaiThitRepo;
+import Service.ILoaiThitService;
 import ViewModels.LoaiThitView;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.List;
  *
  * @author Tus
  */
-public class LoaiThitService implements Service.ILoaiThitService{
+public class LoaiThitService implements ILoaiThitService{
     private LoaiThitRepo rs = new LoaiThitRepo();
     @Override
     public List<LoaiThitView> getAll() {
@@ -27,12 +28,17 @@ public class LoaiThitService implements Service.ILoaiThitService{
         }
         return ds;
     }
+    
+    public LoaiThitView getByName(String name) {
+        LoaiThitDomain x = rs.getByName(name);
+        System.out.println(x);
+        return new LoaiThitView(x.getId(), x.getMa(), x.getTen(), x.getTrangthai());
+    }
 
     @Override
     public boolean add(LoaiThitView tv) {
        LoaiThitDomain domain = new LoaiThitDomain(tv.getId(), tv.getMa(), tv.getTen(), tv.getTrangthai());
-        this.rs.add(domain);
-        return true;
+        return this.rs.add(domain);
     }
 
     @Override

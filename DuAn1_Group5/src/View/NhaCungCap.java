@@ -9,6 +9,7 @@ import Service.Implement.NCCServices;
 import ViewModels.NhaCCView;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -16,16 +17,24 @@ import javax.swing.table.DefaultTableModel;
  * @author Tus
  */
 public class NhaCungCap extends javax.swing.JFrame {
+
     NhaCCView ncc = new NhaCCView();
 
     private NCCServices service = new NCCServices();
+
     public NhaCungCap() {
         initComponents();
         setLocationRelativeTo(null);
         this.taiDuLieu();
     }
+
     private void taiDuLieu() {
         DefaultTableModel model = (DefaultTableModel) this.tblNCC.getModel();
+
+        while (tblNCC.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+
         model.setRowCount(0);
         ArrayList<NhaCCView> list = (ArrayList<NhaCCView>) this.service.getAll();
         for (NhaCCView x : list) {
@@ -37,15 +46,43 @@ public class NhaCungCap extends javax.swing.JFrame {
             };
             model.addRow(rowData);
         }
-        
+
+    }
+
+    private boolean errorTextField(JTextField jTextField, String mess) {
+        JOptionPane.showMessageDialog(this, mess);
+        jTextField.selectAll();
+        jTextField.requestFocus();
+        return false;
+    }
+
+    private boolean validation() {
+        String s = txtMa.getText().trim();
+
+        if (s.equals("")) {
+            return errorTextField(txtMa, "Vui lòng nhập mã hộp thịt");
         }
-    private NhaCCView getForm(){
+
+        s = txtTen.getText().trim();
+        if (s.equals("")) {
+            return errorTextField(txtTen, "Vui lòng nhập tên hộp thịt");
+        }
+
+        if (!rdoConHan.isSelected() && !rdohetHan.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn trạng thái");
+            return false;
+        }
+
+        return true;
+    }
+
+    private NhaCCView getForm() {
         String id = this.LBID.getText();
         String ma = this.txtMa.getText();
         String ten = this.txtTen.getText();
-        int trangthai = this.rdoConHan.isSelected() ? 0  : 1;
+        int trangthai = this.rdoConHan.isSelected() ? 0 : 1;
         NhaCCView nv = new NhaCCView(id, ma, ten, trangthai);
-        return nv;  
+        return nv;
     }
 
     /**
@@ -72,8 +109,6 @@ public class NhaCungCap extends javax.swing.JFrame {
         tblNCC = new javax.swing.JTable();
         rdoConHan = new javax.swing.JRadioButton();
         rdohetHan = new javax.swing.JRadioButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Id:");
 
@@ -201,63 +236,71 @@ public class NhaCungCap extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        if (!validation()) {
+            return;
+        }
         int chon = JOptionPane.showConfirmDialog(this, "Xác Nhận Thêm Nhà Cung Cấp");
         if (chon == JOptionPane.YES_OPTION) {
-          NhaCCView ncch = this.getForm();
-          NhaCCView nccv = ncc.getNCCId(txtMa.getText());
-            if (ncch == null) {
-                JOptionPane.showMessageDialog(this, "Thêm thất bại", "Cảnh báo", JOptionPane.ERROR_MESSAGE);
-                return;
-            } else if (nccv != null){
-                JOptionPane.showMessageDialog(this, "Đã Có Nhà Cung Cấp Này","Cảnh báo", JOptionPane.ERROR_MESSAGE);
-                return;
+            NhaCCView ncch = this.getForm();
+            if (this.service.add(ncch)) {
+                JOptionPane.showMessageDialog(this, "Thêm Thành Công");
+                this.taiDuLieu();
+            } else {
+                JOptionPane.showMessageDialog(this, "Thêm Thất Bại");
             }
-            this.service.add(ncch);
-            JOptionPane.showMessageDialog(this, "Thêm Thành Công");
-            this.taiDuLieu();
-            
-        }else {
+
+        } else {
             JOptionPane.showMessageDialog(this, "Hủy Thêm Thành Công");
             return;
         }
-       
-        
+
+
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        NhaCCView nc = this.getForm();
-        if (nc ==null) {
+        int row = tblNCC.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn nhà cung cấp cần sửa");
             return;
         }
-        this.service.update(nc);
-        this.taiDuLieu();
+        if (!validation())
+            return;
+        if (this.service.update(getForm())) {
+            this.taiDuLieu();
+            JOptionPane.showMessageDialog(this, "Sửa nhà cung cấp thành công");
+        } else
+            JOptionPane.showMessageDialog(this, "Sửa nhà cung cấp thất bại");
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        NhaCCView nc = this.getForm();
-        if (nc ==null) {
+        int row = tblNCC.getSelectedRow();
+        if (row < 0) {
+            JOptionPane.showMessageDialog(this, "Vui lòng chọn loại thịt cần xóa");
             return;
         }
-        this.service.delete(nc);
-        this.taiDuLieu();
+        if (this.service.delete(getForm())) {
+            this.taiDuLieu();
+            JOptionPane.showMessageDialog(this, "Xóa loại thịt thành công");
+        } else
+            JOptionPane.showMessageDialog(this, "Xóa loại thịt thất bại");
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void tblNCCMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblNCCMouseClicked
         int row = this.tblNCC.getSelectedRow();
-        if (row == -1 ) {
+        if (row == -1) {
             return;
         }
         String id = this.tblNCC.getValueAt(row, 0).toString();
         String ma = this.tblNCC.getValueAt(row, 1).toString();
         String ten = this.tblNCC.getValueAt(row, 2).toString();
         String Trangthai = this.tblNCC.getValueAt(row, 3).toString();
-        
+
         this.LBID.setText(id);
         this.txtMa.setText(ma);
         this.txtTen.setText(ten);
         if (this.rdoConHan.equals("Còn Hạn")) {
             this.rdoConHan.setSelected(true);
-        } else{
+        } else {
             this.rdohetHan.setSelected(true);
         }
     }//GEN-LAST:event_tblNCCMouseClicked
@@ -320,5 +363,4 @@ public class NhaCungCap extends javax.swing.JFrame {
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 
-    
 }

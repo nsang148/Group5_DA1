@@ -10,6 +10,7 @@ import Untility.DBContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,29 +18,51 @@ import java.util.List;
  *
  * @author Tus
  */
-public class LoaiThitRepo implements ILoaiThitRepo{
+public class LoaiThitRepo implements ILoaiThitRepo {
+
+    private LoaiThitDomain getLoaiThit(ResultSet rs) throws SQLException {
+        String id = rs.getString("Id");
+        String ma = rs.getString("Ma");
+        String ten = rs.getString("Ten");
+        int trangthai = rs.getInt("TrangThai");
+        LoaiThitDomain tdm = new LoaiThitDomain(id, ma, ten, trangthai);
+        return tdm;
+    }
 
     @Override
     public List<LoaiThitDomain> getAll() {
-      List<LoaiThitDomain> td = new ArrayList<>();
+        List<LoaiThitDomain> td = new ArrayList<>();
         try {
             Connection conn = DBContext.getConnection();
             String sql = "SELECT * FROM LoaiThit";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.execute();
             ResultSet rs = ps.getResultSet();
-            while(rs.next()){
-                String id = rs.getString("Id");
-                String ma = rs.getString("Ma");
-                String ten = rs.getString("Ten");
-                int trangthai = rs.getInt("TrangThai");
-                LoaiThitDomain tdm = new LoaiThitDomain(id, ma, ten, trangthai);
-                td.add(tdm);
+            while (rs.next()) {
+                td.add(getLoaiThit(rs));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return td;
+    }
+
+    public LoaiThitDomain getByName(String name) {
+        System.out.println(name);
+        try {
+            Connection conn = DBContext.getConnection();
+            String sql = "SELECT * FROM LoaiThit WHERE Ten LIKE ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, name);
+            ps.execute();
+            ResultSet rs = ps.getResultSet();
+            if (rs.next()) {
+                return getLoaiThit(rs);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
@@ -51,7 +74,7 @@ public class LoaiThitRepo implements ILoaiThitRepo{
             ps.setString(1, th.getMa());
             ps.setString(2, th.getTen());
             ps.setInt(3, th.getTrangthai());
-            ps.execute();
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -64,8 +87,8 @@ public class LoaiThitRepo implements ILoaiThitRepo{
                 + "   SET \n"
                 + "      [Ma] =?\n"
                 + "      ,[Ten] =? \n"
-                + "      ,[TrangThai] =? \n"
-                + " WHERE Id=?";
+                + "      ,[TrangThai] = ? \n"
+                + " WHERE Id LIKE ?";
         int check = 0;
         try (java.sql.Connection con = DBContext.getConnection(); PreparedStatement ps = con.prepareStatement(query);) {
             ps.setObject(1, th.getMa());
@@ -82,18 +105,16 @@ public class LoaiThitRepo implements ILoaiThitRepo{
 
     @Override
     public boolean delete(LoaiThitDomain th) {
-      try {
+        try {
             java.sql.Connection conn = DBContext.getConnection();
-            String sql = "DELETE LoaiThit where Ma= ?";
+            String sql = "DELETE LoaiThit where id LIKE ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, th.getMa());
-            ps.execute();
+            ps.setString(1, th.getId());
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
-    
-    
-    
+
 }

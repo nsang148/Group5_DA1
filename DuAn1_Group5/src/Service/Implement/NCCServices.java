@@ -31,25 +31,27 @@ public class NCCServices implements INCCServices{
         return ds;
     }
 
+    public NhaCCView getByName(String name) {
+        NhaCungCapDomain x = rs.getByName(name);
+        return new NhaCCView(x.getId(), x.getMa(), x.getTen(), x.getTrangThai());
+    }
+    
     @Override
     public boolean add(NhaCCView nv) {
      NhaCungCapDomain domain = new NhaCungCapDomain(nv.getId(), nv.getMa(), nv.getTen(), nv.getTrangthai());
-     this.rs.add(domain);
-     return true;
+     return this.rs.add(domain);
     }
 
     @Override
     public boolean update(NhaCCView nv) {
         NhaCungCapDomain capDomain = new NhaCungCapDomain(nv.getId(), nv.getMa(), nv.getTen(), nv.getTrangthai());
-        this.rs.update(capDomain);
-        return true;
+        return this.rs.update(capDomain);
     }
 
     @Override
     public boolean delete(NhaCCView nv) {
      NhaCungCapDomain nccd = new NhaCungCapDomain(nv.getId(), nv.getMa(), nv.getTen(), nv.getTrangthai());
-     this.rs.delete(nccd);
-     return true;
+     return this.rs.delete(nccd);
     }
 
     

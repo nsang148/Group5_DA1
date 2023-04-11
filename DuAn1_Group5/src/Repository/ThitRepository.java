@@ -26,9 +26,9 @@ public class ThitRepository implements IThitRepo {
         String ten = rs.getString("Ten");
         int trangthai = rs.getInt("TrangThai");
         ThitDomain tdm = new ThitDomain(id, ma, ten, trangthai);
-        return tdm;                
+        return tdm;
     }
-    
+
     @Override
     public List<ThitDomain> getAll() {
         List<ThitDomain> td = new ArrayList<>();
@@ -56,7 +56,7 @@ public class ThitRepository implements IThitRepo {
             ps.setString(1, th.getMa());
             ps.setString(2, th.getTen());
             ps.setInt(3, th.getTrangthai());
-            ps.execute();
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -70,29 +70,28 @@ public class ThitRepository implements IThitRepo {
                 + "      [Ma] =?\n"
                 + "      ,[Ten] =? \n"
                 + "      ,[TrangThai] =? \n"
-                + " WHERE Id=?";
-        int check = 0;
+                + " WHERE Id LIKE ?";
         try (java.sql.Connection con = DBContext.getConnection(); PreparedStatement ps = con.prepareStatement(query);) {
             ps.setObject(1, th.getMa());
             ps.setObject(2, th.getTen());
             ps.setObject(3, th.getTrangthai());
             ps.setObject(4, th.getId());
 
-            check = ps.executeUpdate();
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return check > 0;
+        return false;
     }
 
     @Override
     public boolean delete(ThitDomain th) {
         try {
             java.sql.Connection conn = DBContext.getConnection();
-            String sql = "DELETE Thit where Ma= ?";
+            String sql = "DELETE Thit where id LIKE ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, th.getMa());
-            ps.execute();
+            ps.setString(1, th.getId());
+            return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -102,15 +101,15 @@ public class ThitRepository implements IThitRepo {
     public ThitDomain getByName(String name) {
         try {
             java.sql.Connection conn = DBContext.getConnection();
-            String sql = "SELECT * FROM Thit WHERE Ten = ?";
+            String sql = "SELECT * FROM Thit WHERE Ten LIKE ?";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, name);
 
             ResultSet resultSet = ps.executeQuery();
 
             if (resultSet.next()) {
-                return  getThit(resultSet);
-        
+                return getThit(resultSet);
+
             }
         } catch (Exception e) {
             e.printStackTrace();
