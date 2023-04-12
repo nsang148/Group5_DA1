@@ -4,6 +4,7 @@
  */
 package Service;
 
+import ViewModels.HopThitView;
 import java.util.List;
 import ViewModels.QuanLyGiamGiaHT;
 
@@ -15,10 +16,12 @@ public interface QuanLyGiamGiaHTService {
     
     List<QuanLyGiamGiaHT> getList();
     
-    String add(QuanLyGiamGiaHT qlgght);
+    String updateMa(String idht ,String idgg);
     
-    String delete(String id);
+    String updatetien(String idht,String idgg);
     
-    String update(QuanLyGiamGiaHT qlgght,String id);
+    String updatetienbyday(QuanLyGiamGiaHT gght);
+     
+    List<HopThitView> getall();
     
 }

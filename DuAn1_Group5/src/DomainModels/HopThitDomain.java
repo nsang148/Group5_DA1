@@ -5,6 +5,7 @@
  */
 package DomainModels;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -12,13 +13,11 @@ import java.util.Date;
  * @author Tus
  */
 public class HopThitDomain {
-
     private String id;
     private String ma;
     private String TenHopThit;
-    private Double GiaBan;
+    private BigDecimal GiaBan;
     private int SoLuongTon;
-    private float KhoiLuong;
     private Date NgayDongGoi;
     private Date HSD;
     private String MoTa;
@@ -27,18 +26,16 @@ public class HopThitDomain {
     private String idloaiThit;
     private String idXuatXu;
     private String idNCC;
-    private Double GiaConLai;
 
     public HopThitDomain() {
     }
 
-    public HopThitDomain(String id, String ma, String TenHopThit, Double GiaBan, int SoLuongTon, float KhoiLuong, Date NgayDongGoi, Date HSD, String MoTa, int TrangThai, String idThit, String idloaiThit, String idXuatXu, String idNCC, Double GiaConLai) {
+    public HopThitDomain(String id, String ma, String TenHopThit, BigDecimal GiaBan, int SoLuongTon, Date NgayDongGoi, Date HSD, String MoTa, int TrangThai, String idThit, String idloaiThit, String idXuatXu, String idNCC) {
         this.id = id;
         this.ma = ma;
         this.TenHopThit = TenHopThit;
         this.GiaBan = GiaBan;
         this.SoLuongTon = SoLuongTon;
-        this.KhoiLuong = KhoiLuong;
         this.NgayDongGoi = NgayDongGoi;
         this.HSD = HSD;
         this.MoTa = MoTa;
@@ -47,127 +44,127 @@ public class HopThitDomain {
         this.idloaiThit = idloaiThit;
         this.idXuatXu = idXuatXu;
         this.idNCC = idNCC;
-        this.GiaConLai = GiaConLai;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public void setMa(String ma) {
-        this.ma = ma;
-    }
-
-    public void setTenHopThit(String TenHopThit) {
-        this.TenHopThit = TenHopThit;
-    }
-
-    public void setGiaBan(Double GiaBan) {
-        this.GiaBan = GiaBan;
-    }
-
-    public void setSoLuongTon(int SoLuongTon) {
-        this.SoLuongTon = SoLuongTon;
-    }
-
-    public void setNgayDongGoi(Date NgayDongGoi) {
-        this.NgayDongGoi = NgayDongGoi;
-    }
-
-    public void setHSD(Date HSD) {
-        this.HSD = HSD;
-    }
-
-    public void setMoTa(String MoTa) {
-        this.MoTa = MoTa;
-    }
-
-    public void setTrangThai(int TrangThai) {
-        this.TrangThai = TrangThai;
-    }
-
-    public void setIdThit(String idThit) {
-        this.idThit = idThit;
-    }
-
-    public void setIdloaiThit(String idloaiThit) {
-        this.idloaiThit = idloaiThit;
-    }
-
-    public void setIdXuatXu(String idXuatXu) {
-        this.idXuatXu = idXuatXu;
-    }
-
-    public void setIdNCC(String idNCC) {
-        this.idNCC = idNCC;
-    }
-
-    public void setGiaConLai(Double GiaConLai) {
-        this.GiaConLai = GiaConLai;
     }
 
     public String getId() {
         return id;
     }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getMa() {
         return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
     public String getTenHopThit() {
         return TenHopThit;
     }
 
-    public Double getGiaBan() {
+    public void setTenHopThit(String TenHopThit) {
+        this.TenHopThit = TenHopThit;
+    }
+
+    public BigDecimal getGiaBan() {
         return GiaBan;
+    }
+
+    public void setGiaBan(BigDecimal GiaBan) {
+        this.GiaBan = GiaBan;
     }
 
     public int getSoLuongTon() {
         return SoLuongTon;
     }
 
+    public void setSoLuongTon(int SoLuongTon) {
+        this.SoLuongTon = SoLuongTon;
+    }
+
     public Date getNgayDongGoi() {
         return NgayDongGoi;
+    }
+
+    public void setNgayDongGoi(Date NgayDongGoi) {
+        this.NgayDongGoi = NgayDongGoi;
     }
 
     public Date getHSD() {
         return HSD;
     }
 
+    public void setHSD(Date HSD) {
+        this.HSD = HSD;
+    }
+
     public String getMoTa() {
         return MoTa;
+    }
+
+    public void setMoTa(String MoTa) {
+        this.MoTa = MoTa;
     }
 
     public int getTrangThai() {
         return TrangThai;
     }
 
+    public void setTrangThai(int TrangThai) {
+        this.TrangThai = TrangThai;
+    }
+
     public String getIdThit() {
         return idThit;
+    }
+
+    public void setIdThit(String idThit) {
+        this.idThit = idThit;
     }
 
     public String getIdloaiThit() {
         return idloaiThit;
     }
 
+    public void setIdloaiThit(String idloaiThit) {
+        this.idloaiThit = idloaiThit;
+    }
+
     public String getIdXuatXu() {
         return idXuatXu;
+    }
+
+    public void setIdXuatXu(String idXuatXu) {
+        this.idXuatXu = idXuatXu;
     }
 
     public String getIdNCC() {
         return idNCC;
     }
 
-    public Double getGiaConLai() {
-        return GiaConLai;
+    public void setIdNCC(String idNCC) {
+        this.idNCC = idNCC;
     }
 
-    public float getKhoiLuong() {
-        return KhoiLuong;
+    @Override
+    public String toString() {
+        return "HopThitDomain{" + "id=" + id + ", ma=" + ma + ", TenHopThit=" + TenHopThit + ", GiaBan=" + GiaBan + ", SoLuongTon=" + SoLuongTon + ", NgayDongGoi=" + NgayDongGoi + ", HSD=" + HSD + ", MoTa=" + MoTa + ", TrangThai=" + TrangThai + ", idThit=" + idThit + ", idloaiThit=" + idloaiThit + ", idXuatXu=" + idXuatXu + ", idNCC=" + idNCC + '}';
     }
+    
+    
+    
+    
 
-    public void setKhoiLuong(float KhoiLuong) {
-        this.KhoiLuong = KhoiLuong;
-    }
+    
 
+    
+    
+    
+
+   
+    
 }

@@ -6,69 +6,86 @@ package ViewModels;
 import Service.Implement.QuanLyGiamGiaServiceImpl;
 import Service.QuanLyGiamGiaService;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  *
  * @author tagot
  */
 public class QuanLyGiamGiaHT {
-    private String ID;
-    private String IdHT;
-    private String IdGiamGia;
-    private BigDecimal DonGia;
-    private BigDecimal SoTienConLai;
-    private int TrangThai;
+ private String Ma;
+private String Ten;
+private BigDecimal GiaBan;
+private BigDecimal GiaConLai;
+private int SoLuongTon;
+private Date HSD;
+private int TrangThai;
+private String IdGiamGia;
+private int PhanTramGiamGia;
+private int NgayConLai;
 
     public QuanLyGiamGiaHT() {
     }
 
-    public QuanLyGiamGiaHT(String ID, String IdHT, String IdGiamGia, BigDecimal DonGia, BigDecimal SoTienConLai, int TrangThai) {
-        this.ID = ID;
-        this.IdHT = IdHT;
-        this.IdGiamGia = IdGiamGia;
-        this.DonGia = DonGia;
-        this.SoTienConLai = SoTienConLai;
+    public QuanLyGiamGiaHT(String Ma, String Ten, BigDecimal GiaBan, BigDecimal GiaConLai, int SoLuongTon, Date HSD, int TrangThai, String IdGiamGia, int PhanTramGiamGia, int NgayConLai) {
+        this.Ma = Ma;
+        this.Ten = Ten;
+        this.GiaBan = GiaBan;
+        this.GiaConLai = GiaConLai;
+        this.SoLuongTon = SoLuongTon;
+        this.HSD = HSD;
         this.TrangThai = TrangThai;
-    }
-
-    public String getID() {
-        return ID;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
-    }
-
-    public String getIdHT() {
-        return IdHT;
-    }
-
-    public void setIdHT(String IdHT) {
-        this.IdHT = IdHT;
-    }
-
-    public String getIdGiamGia() {
-        return IdGiamGia;
-    }
-
-    public void setIdGiamGia(String IdGiamGia) {
         this.IdGiamGia = IdGiamGia;
+        this.PhanTramGiamGia = PhanTramGiamGia;
+        this.NgayConLai = NgayConLai;
     }
 
-    public BigDecimal getDonGia() {
-        return DonGia;
+    public String getMa() {
+        return Ma;
     }
 
-    public void setDonGia(BigDecimal DonGia) {
-        this.DonGia = DonGia;
+    public void setMa(String Ma) {
+        this.Ma = Ma;
     }
 
-    public BigDecimal getSoTienConLai() {
-        return SoTienConLai;
+    public String getTen() {
+        return Ten;
     }
 
-    public void setSoTienConLai(BigDecimal SoTienConLai) {
-        this.SoTienConLai = SoTienConLai;
+    public void setTen(String Ten) {
+        this.Ten = Ten;
+    }
+
+    public BigDecimal getGiaBan() {
+        return GiaBan;
+    }
+
+    public void setGiaBan(BigDecimal GiaBan) {
+        this.GiaBan = GiaBan;
+    }
+
+    public BigDecimal getGiaConLai() {
+        return GiaConLai;
+    }
+
+    public void setGiaConLai(BigDecimal GiaConLai) {
+        this.GiaConLai = GiaConLai;
+    }
+
+    public int getSoLuongTon() {
+        return SoLuongTon;
+    }
+
+    public void setSoLuongTon(int SoLuongTon) {
+        this.SoLuongTon = SoLuongTon;
+    }
+
+    public Date getHSD() {
+        return HSD;
+    }
+
+    public void setHSD(Date HSD) {
+        this.HSD = HSD;
     }
 
     public int getTrangThai() {
@@ -79,14 +96,47 @@ public class QuanLyGiamGiaHT {
         this.TrangThai = TrangThai;
     }
 
-    @Override
-    public String toString() {
-        return "QuanLyGiamGiaHT{" + "ID=" + ID + ", IdHT=" + IdHT + ", IdGiamGia=" + IdGiamGia + ", DonGia=" + DonGia + ", SoTienConLai=" + SoTienConLai + ", TrangThai=" + TrangThai + '}';
-    }
-        public Object[] toDataRow() {
-        return new Object[]{ID,IdHT,IdGiamGia,DonGia,SoTienConLai,TrangThai};
+    public String getIdGiamGia() {
+        return IdGiamGia;
     }
 
-        private QuanLyGiamGiaService service = new QuanLyGiamGiaServiceImpl();
+    public void setIdGiamGia(String IdGiamGia) {
+        this.IdGiamGia = IdGiamGia;
+    }
+
+    public int getPhanTramGiamGia() {
+        return PhanTramGiamGia;
+    }
+
+    public void setPhanTramGiamGia(int PhanTramGiamGia) {
+        this.PhanTramGiamGia = PhanTramGiamGia;
+    }
+
+    public int getNgayConLai() {
+        return NgayConLai;
+    }
+
+    public void setNgayConLai(int NgayConLai) {
+        this.NgayConLai = NgayConLai;
+    }
+
+    @Override
+    public String toString() {
+        return "QuanLyGiamGiaHT{" + "Ma=" + Ma + ", Ten=" + Ten + ", GiaBan=" + GiaBan + ", GiaConLai=" + GiaConLai + ", SoLuongTon=" + SoLuongTon + ", HSD=" + HSD + ", TrangThai=" + TrangThai + ", IdGiamGia=" + IdGiamGia + ", PhanTramGiamGia=" + PhanTramGiamGia + ", NgayConLai=" + NgayConLai + '}';
+    }
+
+
+
+    public String setTrangThaiS(int TrangThai){
+        if(TrangThai==1){
+            return "đang bán";
+        } else{
+            return "ngưng bán";
+        }
+        
+    }
+    
+
+
 
 }

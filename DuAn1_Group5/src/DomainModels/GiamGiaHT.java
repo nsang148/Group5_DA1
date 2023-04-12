@@ -3,71 +3,80 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package DomainModels;
-
+import ViewModels.*;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  *
  * @author tagot
  */
 public class GiamGiaHT {
-    private String ID;
-    private String IdHT;
-    private String IdGiamGia;
-    private BigDecimal DonGia;
-    private BigDecimal SoTienConLai;
-    private int TrangThai;
+private String Ma;
+private String Ten;
+private BigDecimal GiaBan;
+private BigDecimal GiaConLai;
+private int SoLuongTon;
+private Date HSD;
+private int TrangThai;
+private String IdGiamGia;
+private int PhanTramGiamGia;
+private int NgayConLai;
 
     public GiamGiaHT() {
     }
 
-    public GiamGiaHT(String ID, String IdHT, String IdGiamGia, BigDecimal DonGia, BigDecimal SoTienConLai, int TrangThai) {
-        this.ID = ID;
-        this.IdHT = IdHT;
-        this.IdGiamGia = IdGiamGia;
-        this.DonGia = DonGia;
-        this.SoTienConLai = SoTienConLai;
-        this.TrangThai = TrangThai;
+    @Override
+    public String toString() {
+        return "GiamGiaHT{" + "Ma=" + Ma + ", Ten=" + Ten + ", GiaBan=" + GiaBan + ", GiaConLai=" + GiaConLai + ", SoLuongTon=" + SoLuongTon + ", HSD=" + HSD + ", TrangThai=" + TrangThai + ", IdGiamGia=" + IdGiamGia + ", PhanTramGiamGia=" + PhanTramGiamGia + ", NgayConLai=" + NgayConLai + '}';
     }
 
-    public String getID() {
-        return ID;
+    public String getMa() {
+        return Ma;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setMa(String Ma) {
+        this.Ma = Ma;
     }
 
-    public String getIdHT() {
-        return IdHT;
+    public String getTen() {
+        return Ten;
     }
 
-    public void setIdHT(String IdHT) {
-        this.IdHT = IdHT;
+    public void setTen(String Ten) {
+        this.Ten = Ten;
     }
 
-    public String getIdGiamGia() {
-        return IdGiamGia;
+    public BigDecimal getGiaBan() {
+        return GiaBan;
     }
 
-    public void setIdGiamGia(String IdGiamGia) {
-        this.IdGiamGia = IdGiamGia;
+    public void setGiaBan(BigDecimal GiaBan) {
+        this.GiaBan = GiaBan;
     }
 
-    public BigDecimal getDonGia() {
-        return DonGia;
+    public BigDecimal getGiaConLai() {
+        return GiaConLai;
     }
 
-    public void setDonGia(BigDecimal DonGia) {
-        this.DonGia = DonGia;
+    public void setGiaConLai(BigDecimal GiaConLai) {
+        this.GiaConLai = GiaConLai;
     }
 
-    public BigDecimal getSoTienConLai() {
-        return SoTienConLai;
+    public int getSoLuongTon() {
+        return SoLuongTon;
     }
 
-    public void setSoTienConLai(BigDecimal SoTienConLai) {
-        this.SoTienConLai = SoTienConLai;
+    public void setSoLuongTon(int SoLuongTon) {
+        this.SoLuongTon = SoLuongTon;
+    }
+
+    public Date getHSD() {
+        return HSD;
+    }
+
+    public void setHSD(Date HSD) {
+        this.HSD = HSD;
     }
 
     public int getTrangThai() {
@@ -78,10 +87,47 @@ public class GiamGiaHT {
         this.TrangThai = TrangThai;
     }
 
-    @Override
-    public String toString() {
-        return "GiamGiaHT{" + "ID=" + ID + ", IdHT=" + IdHT + ", IdGiamGia=" + IdGiamGia + ", DonGia=" + DonGia + ", SoTienConLai=" + SoTienConLai + ", TrangThai=" + TrangThai + '}';
+    public String getIdGiamGia() {
+        return IdGiamGia;
     }
 
-    
+    public void setIdGiamGia(String IdGiamGia) {
+        this.IdGiamGia = IdGiamGia;
+    }
+
+    public int getPhanTramGiamGia() {
+        return PhanTramGiamGia;
+    }
+
+    public void setPhanTramGiamGia(int PhanTramGiamGia) {
+        this.PhanTramGiamGia = PhanTramGiamGia;
+    }
+
+    public int getNgayConLai() {
+        return NgayConLai;
+    }
+
+    public void setNgayConLai(int NgayConLai) {
+        this.NgayConLai = NgayConLai;
+    }
+
+    public GiamGiaHT(String Ma, String Ten, BigDecimal GiaBan, BigDecimal GiaConLai, int SoLuongTon, Date HSD, int TrangThai, String IdGiamGia, int PhanTramGiamGia, int NgayConLai) {
+        this.Ma = Ma;
+        this.Ten = Ten;
+        this.GiaBan = GiaBan;
+        this.GiaConLai = GiaConLai;
+        this.SoLuongTon = SoLuongTon;
+        this.HSD = HSD;
+        this.TrangThai = TrangThai;
+        this.IdGiamGia = IdGiamGia;
+        this.PhanTramGiamGia = PhanTramGiamGia;
+        this.NgayConLai = NgayConLai;
+    }
+
+
+
+
+
+
+
 }
