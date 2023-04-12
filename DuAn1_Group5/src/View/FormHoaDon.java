@@ -46,6 +46,7 @@ public class FormHoaDon extends javax.swing.JFrame {
     public FormHoaDon() {
         initComponents();
         this.setLocationRelativeTo(null);
+        loadTable();
         cardLayout = (CardLayout) pnlRight.getLayout();
 
         if (OSUtils.getOSType() == OSUtils.OSType.MacOS) {
@@ -95,6 +96,7 @@ public class FormHoaDon extends javax.swing.JFrame {
             });
         }
     }
+    
 
     public void XuatHoaDon(String ma) {
         try {

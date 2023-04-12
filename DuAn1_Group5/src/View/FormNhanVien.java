@@ -87,7 +87,7 @@ public class FormNhanVien extends javax.swing.JFrame {
         btg();
         btg1();
         defaultTableModel = (DefaultTableModel) tableNhanVien.getModel();
-        String[] header = {"Mã KH", "Họ và tên", "Giới tính", "Ngày sinh", "Địa chỉ", "SDT", "Chức vụ", "Trạng thái"};
+        String[] header = {"Mã NV", "Họ và tên", "Giới tính", "Ngày sinh", "Địa chỉ", "SDT", "Chức vụ", "Trạng thái"};
         defaultTableModel.setColumnIdentifiers(header);
         nhanVienService = new NhanVienServiceImpl();
         listNv = nhanVienService.getList();
@@ -165,7 +165,6 @@ public class FormNhanVien extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         txtTimKIEM = new javax.swing.JTextField();
-        btEXEL = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableNhanVien = new javax.swing.JTable();
@@ -703,13 +702,6 @@ public class FormNhanVien extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        btEXEL.setBackground(new java.awt.Color(204, 204, 204));
-        btEXEL.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEXELActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -717,17 +709,13 @@ public class FormNhanVien extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(37, 37, 37)
-                .addComponent(btEXEL, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btEXEL, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -869,7 +857,7 @@ public class FormNhanVien extends javax.swing.JFrame {
                 data[4] = list.get(i).getDiaChi();
                 data[5] = list.get(i).getSdt();
                 data[6] = list.get(i).getChucVu();
-                if (list.get(i).getTrangThai() == 1) {
+                if (list.get(i).getTrangThai()==1) {
                     data[7] = "Đang làm việc";
                 } else {
                     data[7] = "Đã nghỉ việc";
@@ -1216,10 +1204,6 @@ public class FormNhanVien extends javax.swing.JFrame {
         display();
     }//GEN-LAST:event_tableNhanVienMouseClicked
 
-    private void btEXELActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEXELActionPerformed
-
-    }//GEN-LAST:event_btEXELActionPerformed
-
     private void txtTimKIEMCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtTimKIEMCaretUpdate
         if (txtTimKIEM.getText().equals("")) {
             List<NhanVienModel> listNew = nhanVienService.getList();
@@ -1284,7 +1268,6 @@ public class FormNhanVien extends javax.swing.JFrame {
     private javax.swing.JRadioButton RDODaNghiViec;
     private javax.swing.JRadioButton RDONam;
     private javax.swing.JRadioButton RDONu;
-    private javax.swing.JButton btEXEL;
     private javax.swing.JButton btUPDATE;
     private javax.swing.JPanel btn_banHang;
     private javax.swing.JPanel btn_giamGia;

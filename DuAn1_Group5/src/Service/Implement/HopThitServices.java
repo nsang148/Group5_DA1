@@ -11,6 +11,7 @@ import ViewModels.HopThitView;
 import java.util.ArrayList;
 import java.util.List;
 import Service.IHopThitService;
+import ViewModels.LayIDHT;
 
 
 /**
@@ -50,6 +51,11 @@ public class HopThitServices implements IHopThitService{
     public boolean delete(HopThitView ht) {
         HopThitDomain domain = getHopThitDomain(ht);
         return this.rs.delete(domain);
+    }
+
+    @Override
+    public List<LayIDHT> getIDHT() {
+return rs.getID();
     }
 }
 

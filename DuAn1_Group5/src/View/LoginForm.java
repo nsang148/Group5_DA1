@@ -216,11 +216,11 @@ public class LoginForm extends javax.swing.JFrame {
         try {
             if (user.equalsIgnoreCase(tk.getUsername()) && pass.equalsIgnoreCase(tk.getPassWorld()) && tk.getChucVu().equalsIgnoreCase("nv")) {
                 this.dispose();
-                FormNhanVien v = new FormNhanVien();
+                HomeForNv v = new HomeForNv();
                 v.setVisible(true);
             } else if (user.equalsIgnoreCase(tk.getUsername()) && pass.equalsIgnoreCase(tk.getPassWorld()) && tk.getChucVu().equalsIgnoreCase("ql")) {
                 this.dispose();
-                FormNhanVien q = new FormNhanVien();
+                Home q = new Home();
                 q.setVisible(true);
             }
         } catch (Exception e) {

@@ -7,6 +7,7 @@ package Repository;
 
 import DomainModels.HopThitDomain;
 import Untility.DBContext;
+import ViewModels.LayIDHT;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -146,6 +147,22 @@ public class HopThitRepository implements IHopThitRepo {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public List<LayIDHT> getID() {
+        List<LayIDHT> listID = new ArrayList<>();
+        String sql = "select ID, MA from HopThit";
+        try ( Connection con = DBContext.getConnection();  PreparedStatement sttm = con.prepareStatement(sql)) {
+            ResultSet rs = sttm.executeQuery();
+            while (rs.next()) {
+                listID.add(new LayIDHT(rs.getString(1), rs.getString(2)));
+            }
+            return listID;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }
