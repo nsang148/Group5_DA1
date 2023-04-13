@@ -291,8 +291,9 @@ public class Home extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-pay-40.png"))); // NOI18N
         jLabel12.setText("Thanh toán");
-        btn_banHang.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_banHang.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 160, 40));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -333,8 +334,9 @@ public class Home extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-bill-30.png"))); // NOI18N
         jLabel5.setText("Hóa đơn");
-        btn_hoaDon.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_hoaDon.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, -1));
 
         btn_nhanVien.setBackground(new java.awt.Color(255, 51, 51));
         btn_nhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -362,8 +364,9 @@ public class Home extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-staff-30.png"))); // NOI18N
         jLabel6.setText("Quản lý nhân viên");
-        btn_nhanVien.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_nhanVien.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 10, 180, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
@@ -395,8 +398,9 @@ public class Home extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-analytics-30.png"))); // NOI18N
         jLabel9.setText("Thống kê");
-        btn_thongKe.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_thongKe.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 10, 130, -1));
 
         btn_hopThit.setBackground(new java.awt.Color(255, 51, 51));
         btn_hopThit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -424,8 +428,9 @@ public class Home extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-meat-30.png"))); // NOI18N
         jLabel10.setText("Quản lý hộp thịt");
-        btn_hopThit.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_hopThit.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 10, 170, -1));
 
         btn_giamGia.setBackground(new java.awt.Color(255, 51, 51));
         btn_giamGia.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -453,8 +458,9 @@ public class Home extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-discount-30.png"))); // NOI18N
         jLabel11.setText("Giảm giá");
-        btn_giamGia.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_giamGia.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, -1));
 
         btn_khachHang.setBackground(new java.awt.Color(255, 51, 51));
         btn_khachHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -482,8 +488,9 @@ public class Home extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-client-30.png"))); // NOI18N
         jLabel13.setText("Khách hàng");
-        btn_khachHang.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_khachHang.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 10, 140, -1));
 
         javax.swing.GroupLayout sidepaneLayout = new javax.swing.GroupLayout(sidepane);
         sidepane.setLayout(sidepaneLayout);
@@ -721,6 +728,7 @@ public class Home extends javax.swing.JFrame {
         txtNgayThanhToan.setEnabled(false);
 
         btnThanhToan.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-pay-40.png"))); // NOI18N
         btnThanhToan.setText("Thanh Toán");
         btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -797,8 +805,8 @@ public class Home extends javax.swing.JFrame {
                     .addComponent(txtNgayThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(29, 29, 29)
                 .addGroup(panelHDLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnXuatHD, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnThanhToan)
+                    .addComponent(btnXuatHD, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
 

@@ -31,6 +31,7 @@ public class FormThongKe extends javax.swing.JFrame {
         initComponents();
 
         this.setLocationRelativeTo(null);
+
         cardLayout = (CardLayout) pnlRight.getLayout();
 
         if (OSUtils.getOSType() == OSUtils.OSType.MacOS) {
@@ -67,8 +68,7 @@ public class FormThongKe extends javax.swing.JFrame {
             pnlActions.add(lblClose);
 
             pnlTitle.setLayout(new FlowLayout(FlowLayout.LEFT, 10, 8));
-            
-            
+
             QuanLyThongKeController controller = new QuanLyThongKeController();
             controller.setTienTochart(JpnTK);
             controller.setSPTochart(JpnSp);
@@ -91,6 +91,11 @@ public class FormThongKe extends javax.swing.JFrame {
         lblClose = new javax.swing.JLabel();
         pnlTitle = new javax.swing.JPanel();
         pnlParent = new javax.swing.JPanel();
+        pnlRight = new javax.swing.JPanel();
+        pnlDataCards = new javax.swing.JPanel();
+        JpnTK = new javax.swing.JPanel();
+        JpnSp = new javax.swing.JPanel();
+        pnlTypography = new javax.swing.JPanel();
         sidepane = new javax.swing.JPanel();
         btn_banHang = new javax.swing.JPanel();
         ind_typo = new javax.swing.JPanel();
@@ -117,16 +122,12 @@ public class FormThongKe extends javax.swing.JFrame {
         btn_khachHang = new javax.swing.JPanel();
         ind_khachHang = new javax.swing.JPanel();
         jLabel13 = new javax.swing.JLabel();
-        pnlRight = new javax.swing.JPanel();
-        pnlDataCards = new javax.swing.JPanel();
-        JpnTK = new javax.swing.JPanel();
-        JpnSp = new javax.swing.JPanel();
-        pnlTypography = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Title Frame Test");
         setLocationByPlatform(true);
         setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1232, 644));
 
         pnlTop.setBackground(new java.awt.Color(255, 51, 51));
         pnlTop.setPreferredSize(new java.awt.Dimension(1024, 30));
@@ -183,6 +184,72 @@ public class FormThongKe extends javax.swing.JFrame {
 
         pnlParent.setLayout(new java.awt.BorderLayout());
 
+        pnlRight.setLayout(new java.awt.CardLayout());
+
+        pnlDataCards.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        JpnTK.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout JpnTKLayout = new javax.swing.GroupLayout(JpnTK);
+        JpnTK.setLayout(JpnTKLayout);
+        JpnTKLayout.setHorizontalGroup(
+            JpnTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 957, Short.MAX_VALUE)
+        );
+        JpnTKLayout.setVerticalGroup(
+            JpnTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 285, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout JpnSpLayout = new javax.swing.GroupLayout(JpnSp);
+        JpnSp.setLayout(JpnSpLayout);
+        JpnSpLayout.setHorizontalGroup(
+            JpnSpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        JpnSpLayout.setVerticalGroup(
+            JpnSpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 285, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout pnlDataCardsLayout = new javax.swing.GroupLayout(pnlDataCards);
+        pnlDataCards.setLayout(pnlDataCardsLayout);
+        pnlDataCardsLayout.setHorizontalGroup(
+            pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDataCardsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(JpnSp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(JpnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        pnlDataCardsLayout.setVerticalGroup(
+            pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlDataCardsLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(JpnTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(JpnSp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        pnlRight.add(pnlDataCards, "card1");
+
+        javax.swing.GroupLayout pnlTypographyLayout = new javax.swing.GroupLayout(pnlTypography);
+        pnlTypography.setLayout(pnlTypographyLayout);
+        pnlTypographyLayout.setHorizontalGroup(
+            pnlTypographyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 981, Short.MAX_VALUE)
+        );
+        pnlTypographyLayout.setVerticalGroup(
+            pnlTypographyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 625, Short.MAX_VALUE)
+        );
+
+        pnlRight.add(pnlTypography, "card2");
+
+        pnlParent.add(pnlRight, java.awt.BorderLayout.CENTER);
+
         sidepane.setBackground(new java.awt.Color(255, 51, 51));
         sidepane.setForeground(new java.awt.Color(51, 51, 51));
         sidepane.setPreferredSize(new java.awt.Dimension(250, 200));
@@ -223,8 +290,9 @@ public class FormThongKe extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-pay-40.png"))); // NOI18N
         jLabel12.setText("Thanh toán");
-        btn_banHang.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_banHang.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 160, 40));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -265,8 +333,9 @@ public class FormThongKe extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-bill-30.png"))); // NOI18N
         jLabel5.setText("Hóa đơn");
-        btn_hoaDon.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_hoaDon.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, -1));
 
         btn_nhanVien.setBackground(new java.awt.Color(255, 51, 51));
         btn_nhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -294,8 +363,9 @@ public class FormThongKe extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-staff-30.png"))); // NOI18N
         jLabel6.setText("Quản lý nhân viên");
-        btn_nhanVien.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_nhanVien.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 10, 180, -1));
 
         jLabel7.setFont(new java.awt.Font("Century Gothic", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(153, 153, 153));
@@ -327,8 +397,9 @@ public class FormThongKe extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-analytics-30.png"))); // NOI18N
         jLabel9.setText("Thống kê");
-        btn_thongKe.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_thongKe.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(33, 10, 130, -1));
 
         btn_hopThit.setBackground(new java.awt.Color(255, 51, 51));
         btn_hopThit.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -356,8 +427,9 @@ public class FormThongKe extends javax.swing.JFrame {
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-meat-30.png"))); // NOI18N
         jLabel10.setText("Quản lý hộp thịt");
-        btn_hopThit.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_hopThit.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 10, 170, -1));
 
         btn_giamGia.setBackground(new java.awt.Color(255, 51, 51));
         btn_giamGia.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -385,8 +457,9 @@ public class FormThongKe extends javax.swing.JFrame {
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-discount-30.png"))); // NOI18N
         jLabel11.setText("Giảm giá");
-        btn_giamGia.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_giamGia.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, 120, -1));
 
         btn_khachHang.setBackground(new java.awt.Color(255, 51, 51));
         btn_khachHang.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -414,8 +487,9 @@ public class FormThongKe extends javax.swing.JFrame {
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(204, 204, 204));
+        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/icons8-client-30.png"))); // NOI18N
         jLabel13.setText("Khách hàng");
-        btn_khachHang.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 10, -1, -1));
+        btn_khachHang.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(38, 10, 140, -1));
 
         javax.swing.GroupLayout sidepaneLayout = new javax.swing.GroupLayout(sidepane);
         sidepane.setLayout(sidepaneLayout);
@@ -465,91 +539,53 @@ public class FormThongKe extends javax.swing.JFrame {
                 .addComponent(btn_giamGia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_khachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(156, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
         );
 
         pnlParent.add(sidepane, java.awt.BorderLayout.LINE_START);
-
-        pnlRight.setLayout(new java.awt.CardLayout());
-
-        pnlDataCards.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        JpnTK.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
-        javax.swing.GroupLayout JpnTKLayout = new javax.swing.GroupLayout(JpnTK);
-        JpnTK.setLayout(JpnTKLayout);
-        JpnTKLayout.setHorizontalGroup(
-            JpnTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 949, Short.MAX_VALUE)
-        );
-        JpnTKLayout.setVerticalGroup(
-            JpnTKLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 285, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout JpnSpLayout = new javax.swing.GroupLayout(JpnSp);
-        JpnSp.setLayout(JpnSpLayout);
-        JpnSpLayout.setHorizontalGroup(
-            JpnSpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        JpnSpLayout.setVerticalGroup(
-            JpnSpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 285, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout pnlDataCardsLayout = new javax.swing.GroupLayout(pnlDataCards);
-        pnlDataCards.setLayout(pnlDataCardsLayout);
-        pnlDataCardsLayout.setHorizontalGroup(
-            pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDataCardsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(JpnSp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(JpnTK, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        pnlDataCardsLayout.setVerticalGroup(
-            pnlDataCardsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDataCardsLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(JpnTK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(JpnSp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-
-        pnlRight.add(pnlDataCards, "card1");
-
-        javax.swing.GroupLayout pnlTypographyLayout = new javax.swing.GroupLayout(pnlTypography);
-        pnlTypography.setLayout(pnlTypographyLayout);
-        pnlTypographyLayout.setHorizontalGroup(
-            pnlTypographyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 981, Short.MAX_VALUE)
-        );
-        pnlTypographyLayout.setVerticalGroup(
-            pnlTypographyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 637, Short.MAX_VALUE)
-        );
-
-        pnlRight.add(pnlTypography, "card2");
-
-        pnlParent.add(pnlRight, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(pnlParent, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     int xy, xx;
-    private void sidepaneMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sidepaneMouseDragged
-        // TODO add your handling code here:
 
-    }//GEN-LAST:event_sidepaneMouseDragged
+    private void lblMaximizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMaximizeMousePressed
+        if (FormThongKe.this.getExtendedState() == MAXIMIZED_BOTH) {
+            FormThongKe.this.setExtendedState(JFrame.NORMAL);
+        } else {
+            FormThongKe.this.setExtendedState(MAXIMIZED_BOTH);
+        }
+    }//GEN-LAST:event_lblMaximizeMousePressed
 
-    private void sidepaneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sidepaneMousePressed
-        // TODO add your handling code here:
+    private void lblCloseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMousePressed
+        System.exit(0);
+    }//GEN-LAST:event_lblCloseMousePressed
 
-    }//GEN-LAST:event_sidepaneMousePressed
+    private void lblMinimizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMousePressed
+        FormThongKe.this.setState(Frame.ICONIFIED);
+    }//GEN-LAST:event_lblMinimizeMousePressed
+
+    private void pnlTopMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMousePressed
+        xx = evt.getX();
+        xy = evt.getY();
+    }//GEN-LAST:event_pnlTopMousePressed
+
+    private void pnlTopMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMouseDragged
+        int x = evt.getXOnScreen();
+        int y = evt.getYOnScreen();
+        this.setLocation(x - xx, y - xy);
+    }//GEN-LAST:event_pnlTopMouseDragged
+
+    private void pnlTopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMouseClicked
+        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
+            if (FormThongKe.this.getExtendedState() == MAXIMIZED_BOTH) {
+                FormThongKe.this.setExtendedState(JFrame.NORMAL);
+            } else {
+                FormThongKe.this.setExtendedState(MAXIMIZED_BOTH);
+            }
+        }
+    }//GEN-LAST:event_pnlTopMouseClicked
 
     private void btn_banHangMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_banHangMousePressed
         // TODO add your handling code here:
@@ -569,7 +605,6 @@ public class FormThongKe extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
-        //        cardLayout.show(pnlRight, "card2");
         Home homeForAd = new Home();
         homeForAd.setVisible(true);
         this.dispose();
@@ -592,7 +627,6 @@ public class FormThongKe extends javax.swing.JFrame {
         ind_icons.setOpaque(false);
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
-
         FormHoaDon hd = new FormHoaDon();
         hd.setVisible(true);
         this.dispose();
@@ -662,49 +696,10 @@ public class FormThongKe extends javax.swing.JFrame {
         ind_giamGia.setOpaque(false);
         ind_khachHang.setOpaque(false);
 
-//        cardLayout.show(pnlRight, "card1");
         FormHopThit ht = new FormHopThit();
         ht.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_hopThitMousePressed
-
-
-    private void lblMaximizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMaximizeMousePressed
-        if (FormThongKe.this.getExtendedState() == MAXIMIZED_BOTH) {
-            FormThongKe.this.setExtendedState(JFrame.NORMAL);
-        } else {
-            FormThongKe.this.setExtendedState(MAXIMIZED_BOTH);
-        }
-    }//GEN-LAST:event_lblMaximizeMousePressed
-
-    private void lblCloseMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblCloseMousePressed
-        System.exit(0);
-    }//GEN-LAST:event_lblCloseMousePressed
-
-    private void lblMinimizeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblMinimizeMousePressed
-        FormThongKe.this.setState(Frame.ICONIFIED);
-    }//GEN-LAST:event_lblMinimizeMousePressed
-
-    private void pnlTopMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMousePressed
-        xx = evt.getX();
-        xy = evt.getY();
-    }//GEN-LAST:event_pnlTopMousePressed
-
-    private void pnlTopMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMouseDragged
-        int x = evt.getXOnScreen();
-        int y = evt.getYOnScreen();
-        this.setLocation(x - xx, y - xy);
-    }//GEN-LAST:event_pnlTopMouseDragged
-
-    private void pnlTopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pnlTopMouseClicked
-        if (evt.getClickCount() == 2 && !evt.isConsumed()) {
-            if (FormThongKe.this.getExtendedState() == MAXIMIZED_BOTH) {
-                FormThongKe.this.setExtendedState(JFrame.NORMAL);
-            } else {
-                FormThongKe.this.setExtendedState(MAXIMIZED_BOTH);
-            }
-        }
-    }//GEN-LAST:event_pnlTopMouseClicked
 
     private void btn_giamGiaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_giamGiaMousePressed
         // TODO add your handling code here:
@@ -751,6 +746,14 @@ public class FormThongKe extends javax.swing.JFrame {
         kH.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btn_khachHangMousePressed
+
+    private void sidepaneMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sidepaneMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sidepaneMouseDragged
+
+    private void sidepaneMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sidepaneMousePressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sidepaneMousePressed
 
     // set and reset color
     void setColor(JPanel panel) {
