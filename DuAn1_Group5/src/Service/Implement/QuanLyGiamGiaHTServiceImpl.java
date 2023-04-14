@@ -29,7 +29,7 @@ public class QuanLyGiamGiaHTServiceImpl implements QuanLyGiamGiaHTService{
             List<GiamGiaHT> listgght = gghtr.getAll();
         List<QuanLyGiamGiaHT> listqlgght = new ArrayList<>();
         for (GiamGiaHT gght : listgght) {
-            listqlgght.add(new QuanLyGiamGiaHT(gght.getMa(), gght.getTen(),gght.getGiaBan(),gght.getGiaConLai(),gght.getSoLuongTon(),gght.getHSD(),gght.getTrangThai(),gght.getIdGiamGia(),gght.getPhanTramGiamGia(),gght.getNgayConLai()));
+            listqlgght.add(new QuanLyGiamGiaHT(gght.getMa(), gght.getTen(),gght.getGiaBan(),gght.getGiaConLai(),gght.getSoLuongTon(),gght.getHSD(),gght.getTrangThai(),gght.getIdGiamGia(),gght.getPhanTramGiamGia()));
         }
         return listqlgght;  
 
@@ -86,12 +86,13 @@ public class QuanLyGiamGiaHTServiceImpl implements QuanLyGiamGiaHTService{
 
     @Override
     public List<HopThitView> getall() {
-            List<HopThitDomain> listht = rs.getall();
-        List<HopThitView> listqlht = new ArrayList<>();
-        for (HopThitDomain ht : listht) {
-            listqlht.add(new HopThitView(ht.getId(), ht.getMa(),ht.getTenHopThit(),ht.getGiaBan(),ht.getSoLuongTon(),ht.getNgayDongGoi(),ht.getHSD(),ht.getMoTa(),ht.getTrangThai(),ht.getIdThit(),ht.getIdloaiThit(),ht.getIdXuatXu(),ht.getIdNCC()));
+        List<HopThitView> ds = new ArrayList<>();
+        List<HopThitDomain> list = this.gghtr.getall();
+        for (HopThitDomain ht : list) {
+            HopThitView hopThitView = new HopThitView(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaBan(), ht.getSoLuongTon(), ht.getKhoiLuong(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdloaiThit(), ht.getIdXuatXu(),ht.getIdGiamGia(), ht.getIdNCC(), ht.getGiaConLai());
+            ds.add(hopThitView);
         }
-        return listqlht;  
+        return ds;
     }
 
 }

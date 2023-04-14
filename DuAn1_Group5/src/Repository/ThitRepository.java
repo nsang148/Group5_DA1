@@ -21,11 +21,12 @@ import java.util.List;
 public class ThitRepository implements IThitRepo {
 
     private ThitDomain getThit(ResultSet rs) throws SQLException {
-        String id = rs.getString("Id");
-        String ma = rs.getString("Ma");
-        String ten = rs.getString("Ten");
-        int trangthai = rs.getInt("TrangThai");
-        ThitDomain tdm = new ThitDomain(id, ma, ten, trangthai);
+        String id = rs.getString(1);
+        String ma = rs.getString(2);
+        String ten = rs.getString(3);
+        String IdLT =rs.getString(4);
+        int trangthai = rs.getInt(5);
+        ThitDomain tdm = new ThitDomain(id, ma, ten,IdLT, trangthai);
         return tdm;
     }
 
@@ -34,7 +35,12 @@ public class ThitRepository implements IThitRepo {
         List<ThitDomain> td = new ArrayList<>();
         try {
             Connection conn = DBContext.getConnection();
-            String sql = "SELECT * FROM Thit";
+            String sql = "SELECT [Id]\n" +
+"      ,[Ma]\n" +
+"      ,[Ten]\n" +
+"      ,(select Ten from LoaiThit lt where lt.Id=t.IdLoaiThit)\n" +
+"      ,[TrangThai]\n" +
+"  FROM Thit t";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.execute();
             ResultSet rs = ps.getResultSet();
@@ -51,11 +57,12 @@ public class ThitRepository implements IThitRepo {
     public boolean add(ThitDomain th) {
         try {
             java.sql.Connection conn = DBContext.getConnection();
-            String sql = "INSERT INTO Thit (Ma, Ten, TrangThai) values (?,?,?)";
+            String sql = "INSERT INTO Thit (Ma, Ten,IdLoaiThit, TrangThai) values (?,?,(select id from LoaiThit where Ma =?) ,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, th.getMa());
             ps.setString(2, th.getTen());
-            ps.setInt(3, th.getTrangthai());
+            ps.setString(3, th.getIdLT());
+            ps.setInt(4, th.getTrangthai());
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();
@@ -69,13 +76,15 @@ public class ThitRepository implements IThitRepo {
                 + "   SET \n"
                 + "      [Ma] =?\n"
                 + "      ,[Ten] =? \n"
+                + "      ,(select id from LoaiThit where [Ma] =?) \n"
                 + "      ,[TrangThai] =? \n"
-                + " WHERE Id LIKE ?";
+                + " WHERE [MA] LIKE ?";
         try (java.sql.Connection con = DBContext.getConnection(); PreparedStatement ps = con.prepareStatement(query);) {
             ps.setObject(1, th.getMa());
             ps.setObject(2, th.getTen());
-            ps.setObject(3, th.getTrangthai());
-            ps.setObject(4, th.getId());
+            ps.setString(3, th.getIdLT());
+            ps.setObject(4, th.getTrangthai());
+            ps.setObject(5, th.getMa());
 
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
@@ -88,9 +97,9 @@ public class ThitRepository implements IThitRepo {
     public boolean delete(ThitDomain th) {
         try {
             java.sql.Connection conn = DBContext.getConnection();
-            String sql = "DELETE Thit where id LIKE ?";
+            String sql = "DELETE Thit where MA LIKE ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, th.getId());
+            ps.setString(1, th.getMa());
             return ps.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();

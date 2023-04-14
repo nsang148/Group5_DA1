@@ -6,7 +6,6 @@
 package View;
 
 import Service.Implement.ThitService;
-import ViewModels.LoaiThitView;
 import ViewModels.ThitView;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -29,7 +28,6 @@ public class Thit extends javax.swing.JFrame {
     }
 
     private void taiDuLieu() {
-        LBID.setText("---");
         txtMa.setText("");
         txtTen.setText("");
         buttonGroup1.clearSelection();
@@ -38,7 +36,7 @@ public class Thit extends javax.swing.JFrame {
         ArrayList<ThitView> list = (ArrayList<ThitView>) this.service.getAll();
         for (ThitView x : list) {
             Object[] rowData = {
-                x.getId(), x.getMa(), x.getTen(), x.getTrangthai()
+                x.getId(), x.getMa(), x.getTen(),x.getIdLT(),x.getTrangthai()
             };
             model.addRow(rowData);
         }
@@ -62,6 +60,10 @@ public class Thit extends javax.swing.JFrame {
         if (s.equals("")) {
             return errorTextField(txtTen, "Vui lòng nhập tên hộp thịt");
         }
+                s = txtTen.getText().trim();
+        if (s.equals("")) {
+            return errorTextField(txtTen, "Vui lòng nhập tên hộp thịt");
+        }
 
         if (!rdoConHang.isSelected() && !rdohetHang.isSelected()) {
             JOptionPane.showMessageDialog(this, "Vui lòng chọn trạng thái");
@@ -75,8 +77,9 @@ public class Thit extends javax.swing.JFrame {
         String id = this.LBID.getText();
         String ma = this.txtMa.getText();
         String ten = this.txtTen.getText();
+        String maLT = this.txtMaLT.getText();
         int trangthai = this.rdoConHang.isSelected() ? 0 : 1;
-        ThitView vw = new ThitView(id, ma, ten, trangthai);
+        ThitView vw = new ThitView(id, ma, ten,maLT, trangthai);
         return vw;
     }
 
@@ -104,22 +107,42 @@ public class Thit extends javax.swing.JFrame {
         btnXoa = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblThit = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        txtMaLT = new javax.swing.JTextField();
+        jButton1 = new javax.swing.JButton();
+
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setText("Id:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 27, -1, -1));
 
         jLabel2.setText("Mã:");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jLabel3.setText("Tên Thịt:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 77, 61, -1));
 
         jLabel5.setText("Trạng Thái:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 144, -1, -1));
 
         LBID.setText("--");
+        getContentPane().add(LBID, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 27, 25, -1));
+
+        txtMa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtMa, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 47, 81, -1));
+        getContentPane().add(txtTen, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 74, 81, -1));
 
         buttonGroup1.add(rdoConHang);
         rdoConHang.setText("Còn hàng");
+        getContentPane().add(rdoConHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(96, 140, -1, -1));
 
         buttonGroup1.add(rdohetHang);
         rdohetHang.setText("Hết hàng");
+        getContentPane().add(rdohetHang, new org.netbeans.lib.awtextra.AbsoluteConstraints(185, 140, -1, -1));
 
         btnThem.setText("Thêm");
         btnThem.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -132,6 +155,7 @@ public class Thit extends javax.swing.JFrame {
                 btnThemActionPerformed(evt);
             }
         });
+        getContentPane().add(btnThem, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 73, -1, -1));
 
         btnSua.setText("Sửa");
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -139,6 +163,7 @@ public class Thit extends javax.swing.JFrame {
                 btnSuaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnSua, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 99, 59, -1));
 
         btnXoa.setText("Xóa");
         btnXoa.addActionListener(new java.awt.event.ActionListener() {
@@ -146,15 +171,24 @@ public class Thit extends javax.swing.JFrame {
                 btnXoaActionPerformed(evt);
             }
         });
+        getContentPane().add(btnXoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(303, 47, 59, -1));
 
         tblThit.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Id", "Mã", "Tên Thịt", "Trạng Thái"
+                "Id", "Mã", "Tên thịt", "loại thịt", "Trạng thái"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tblThit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblThitMouseClicked(evt);
@@ -162,79 +196,19 @@ public class Thit extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tblThit);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LBID))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rdoConHang)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rdohetHang)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnThem, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSua, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnXoa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(48, 48, 48))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel1)
-                        .addComponent(LBID))
-                    .addComponent(btnThem))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(btnSua)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnXoa))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rdoConHang)
-                            .addComponent(rdohetHang)
-                            .addComponent(jLabel5))))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
-                .addContainerGap())
-        );
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 160, 390, 138));
+
+        jLabel4.setText("Mã Loại Thịt:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 104, -1, -1));
+        getContentPane().add(txtMaLT, new org.netbeans.lib.awtextra.AbsoluteConstraints(118, 100, 81, -1));
+
+        jButton1.setText("...");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 103, 20, 20));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -258,10 +232,12 @@ public class Thit extends javax.swing.JFrame {
 
     private void tblThitMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblThitMouseClicked
         int row = tblThit.getSelectedRow();
-        LBID.setText(tblThit.getValueAt(row, 0).toString());
         txtMa.setText(tblThit.getValueAt(row, 1).toString());
         txtTen.setText(tblThit.getValueAt(row, 2).toString());
-        String check = tblThit.getValueAt(row, 3).toString();
+        txtMaLT.setText(tblThit.getValueAt(row, 3).toString());
+        
+        String check = tblThit.getValueAt(row, 4).toString();
+        
         if (Integer.parseInt(check) > 0) {
             rdoConHang.setSelected(true);
         } else {
@@ -298,12 +274,21 @@ public class Thit extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private ThitView getThitFromForm() {
-        return new ThitView(null, txtMa.getText(), txtTen.getText(), rdoConHang.isSelected() ? 1 : 0);
+        return new ThitView(null, txtMa.getText(), txtTen.getText(),txtMaLT.getText(), rdoConHang.isSelected() ? 1 : 0);
     }
 
     private void btnThemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemMouseClicked
+
+    private void txtMaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMaActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        new LoaiThit().setVisible(true);
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -347,15 +332,18 @@ public class Thit extends javax.swing.JFrame {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rdoConHang;
     private javax.swing.JRadioButton rdohetHang;
     private javax.swing.JTable tblThit;
     private javax.swing.JTextField txtMa;
+    private javax.swing.JTextField txtMaLT;
     private javax.swing.JTextField txtTen;
     // End of variables declaration//GEN-END:variables
 }

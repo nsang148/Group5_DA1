@@ -60,7 +60,7 @@ public class QuanLyGiamGiaHTView extends javax.swing.JFrame {
         private void loaddatagght(List<QuanLyGiamGiaHT> listgght) {
         dtm3.setRowCount(0);
         for (QuanLyGiamGiaHT gght : listgght) {
-            dtm3.addRow(new Object[]{gght.getMa(),gght.getTen(),gght.getGiaBan(),gght.getGiaConLai(),gght.getSoLuongTon(),gght.getHSD(),gght.setTrangThaiS(gght.getTrangThai()),gght.getIdGiamGia(),gght.getPhanTramGiamGia(),gght.getNgayConLai()});
+            dtm3.addRow(new Object[]{gght.getMa(),gght.getTen(),gght.getGiaBan(),gght.getGiaConLai(),gght.getSoLuongTon(),gght.getHSD(),gght.setTrangThaiS(gght.getTrangThai()),gght.getIdGiamGia(),gght.getPhanTramGiamGia()});
         }
     } 
         
@@ -315,7 +315,6 @@ public class QuanLyGiamGiaHTView extends javax.swing.JFrame {
     private void txt_maggCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txt_maggCaretUpdate
         // TODO add your handling code here:
         service3.updateMa(txt_ma.getText(),txt_magg.getText());
-        service3.updatetien(txt_ma.getText(), txt_magg.getText());
         listgght= service3.getList();
         loaddatagght(listgght);
         

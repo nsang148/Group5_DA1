@@ -17,6 +17,7 @@ public class ThitView {
     private String id;
     private String ma;
     private String ten;
+    private String idLT;
     private int trangthai;
 
     private ArrayList<ThitView> xx = new ArrayList<>();
@@ -24,10 +25,11 @@ public class ThitView {
     public ThitView() {
     }
 
-    public ThitView(String id, String ma, String ten, int trangthai) {
+    public ThitView(String id, String ma, String ten, String idLT, int trangthai) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
+        this.idLT = idLT;
         this.trangthai = trangthai;
     }
 
@@ -55,6 +57,14 @@ public class ThitView {
         this.ten = ten;
     }
 
+    public String getIdLT() {
+        return idLT;
+    }
+
+    public void setIdLT(String idLT) {
+        this.idLT = idLT;
+    }
+
     public int getTrangthai() {
         return trangthai;
     }
@@ -63,6 +73,15 @@ public class ThitView {
         this.trangthai = trangthai;
     }
 
+    public ArrayList<ThitView> getXx() {
+        return xx;
+    }
+
+    public void setXx(ArrayList<ThitView> xx) {
+        this.xx = xx;
+    }
+
+    
     public ThitView getThitId(String ma) {
         for (ThitView x : xx) {
             if (x.getId().equalsIgnoreCase(ma)) {
@@ -93,6 +112,14 @@ public class ThitView {
         final ThitView other = (ThitView) obj;
         return Objects.equals(this.id, other.id);
     }
-
+    
+    public String setTrangThaiS(int TrangThai){
+        if(TrangThai==0){
+            return "còn hàng";
+        } else{
+            return "hết";
+        }
+        
+    }
     
 }

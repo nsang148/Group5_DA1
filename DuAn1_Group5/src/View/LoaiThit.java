@@ -44,7 +44,7 @@ public class LoaiThit extends javax.swing.JFrame {
         ArrayList<LoaiThitView> list = (ArrayList<LoaiThitView>) this.service.getAll();
         for (LoaiThitView x : list) {
             Object[] rowData = {
-                x.getId(), x.getMa(), x.getTen(), x.getTrangthai()
+                x.getId(), x.getMa(), x.getTen(), x.setTrangThaiS(x.getTrangthai())
             };
             model.addRow(rowData);
         }
@@ -155,7 +155,15 @@ public class LoaiThit extends javax.swing.JFrame {
             new String [] {
                 "ID", "Mã", "Loại Thịt", "Trạng Thái"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         tblLoaiThit.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblLoaiThitMouseClicked(evt);

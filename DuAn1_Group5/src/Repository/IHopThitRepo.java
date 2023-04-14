@@ -6,6 +6,7 @@
 package Repository;
 
 import DomainModels.HopThitDomain;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,6 +16,10 @@ import java.util.List;
 public interface IHopThitRepo {
     List<HopThitDomain> getall();
     boolean add(HopThitDomain ht);
-    boolean update(HopThitDomain ht);
-    boolean delete(HopThitDomain ht);
+    boolean updateNCC(String TenNCC,String MaHT);
+    boolean updatexx(String Tenxx,String MaHT);
+    boolean updateGG(String MaGG,String MaHT);
+    boolean updateThit(String TensT,String MaHT);    
+    boolean delete(String Ma);
+    public ArrayList<HopThitDomain> timKiem(String ma);
 }

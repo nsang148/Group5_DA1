@@ -91,7 +91,13 @@ public class NhaCCView {
         final NhaCCView other = (NhaCCView) obj;
         return Objects.equals(this.id, other.id);
     }
-    
+    public String setTrangThaiS(int TrangThai){
+        if(TrangThai==0){
+            return "còn hạn HĐ";
+        } else{
+            return "hết hạn HĐ";
+        }
+    }    
     
     
 }

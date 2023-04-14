@@ -14,7 +14,11 @@ import java.util.List;
  */
 public interface IHopThitService {
     List<HopThitView> getal();
-    boolean add(HopThitView ht);
-    boolean update(HopThitView ht);
-    boolean delete(HopThitView ht);
+    String add(HopThitView ht);
+    String updatencc(String TenNCC,String MaHT);
+    String updatexx(String Tenxx,String MaHT);
+    String updateGG(String MaGG,String MaHT);
+    String update(String TensT,String MaHT);    
+    String delete(String Ma);
+    public List<HopThitView> search(String ma);
 }

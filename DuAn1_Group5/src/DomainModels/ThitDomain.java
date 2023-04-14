@@ -13,15 +13,17 @@ public class ThitDomain {
     private String id;
     private String ma;
     private String ten;
+    private String idLT;
     private int trangthai;
 
     public ThitDomain() {
     }
 
-    public ThitDomain(String id, String ma, String ten, int trangthai) {
+    public ThitDomain(String id, String ma, String ten,String idLT, int trangthai) {
         this.id = id;
         this.ma = ma;
         this.ten = ten;
+        this.idLT = idLT;
         this.trangthai = trangthai;
     }
 
@@ -56,6 +58,14 @@ public class ThitDomain {
 
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
+    }
+
+    public String getIdLT() {
+        return idLT;
+    }
+
+    public void setIdLT(String idLT) {
+        this.idLT = idLT;
     }
     
     

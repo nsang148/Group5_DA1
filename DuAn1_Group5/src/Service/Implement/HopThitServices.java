@@ -19,43 +19,85 @@ import ViewModels.LayIDHT;
  * @author Tus
  */
 public class HopThitServices implements IHopThitService{
-    private HopThitDomain getHopThitDomain(HopThitView ht) {
-        return new HopThitDomain(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaBan(), ht.getSoLuongTon(), ht.getKhoiLuong(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdloaiThit(), ht.getIdXuatXu(), ht.getIdNCC(), ht.getGiaConLai());
-    }
-    
+   
     private HopThitRepository rs = new HopThitRepository();
     @Override
     public List<HopThitView> getal() {
         List<HopThitView> ds = new ArrayList<>();
         List<HopThitDomain> list = this.rs.getall();
         for (HopThitDomain ht : list) {
-            HopThitView hopThitView = new HopThitView(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaBan(), ht.getSoLuongTon(), ht.getKhoiLuong(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdloaiThit(), ht.getIdXuatXu(), ht.getIdNCC(), ht.getGiaConLai());
+            HopThitView hopThitView = new HopThitView(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaBan(), ht.getSoLuongTon(), ht.getKhoiLuong(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdloaiThit(), ht.getIdXuatXu(),ht.getIdGiamGia(), ht.getIdNCC(), ht.getGiaConLai());
             ds.add(hopThitView);
         }
         return ds;
     }
 
     @Override
-    public boolean add(HopThitView ht) {
-        HopThitDomain domain = getHopThitDomain(ht);
-        return this.rs.add(domain);
+    public String add(HopThitView qlht) {
+            HopThitDomain ht = new HopThitDomain(qlht.getId(),qlht.getMa(), qlht.getTenHopThit(), qlht.getGiaBan(), qlht.getSoLuongTon(), qlht.getKhoiLuong(),qlht.getNgayDongGoi(), qlht.getHSD(), qlht.getMoTa(), qlht.getTrangThai());
+            Boolean addCate = rs.add(ht);
+        if (addCate) {
+            return "Thanh cong";
+        }
+            return "That bai";
+    }
+
+
+    
+
+    @Override
+    public String delete(String Ma) {
+        Boolean addCate = rs.delete(Ma);
+        if (addCate) {
+            return "Thanh cong";
+        }
+        return "That bai";  
+    }
+
+
+    @Override
+    public List<HopThitView> search(String ma) {
+           List<HopThitDomain> listtk = rs.timKiem(ma);
+                  List<HopThitView> listqlhttk = new ArrayList<>();
+        for (HopThitDomain ht : listtk) {
+            listqlhttk.add(new HopThitView(ht.getId(),ht.getMa(), ht.getTenHopThit(), ht.getGiaBan(), ht.getSoLuongTon(), ht.getKhoiLuong(),ht.getNgayDongGoi(), ht.getHSD(), ht.getMoTa(), ht.getTrangThai(), ht.getIdThit(), ht.getIdloaiThit(), ht.getIdXuatXu(),ht.getIdGiamGia(), ht.getIdNCC(), ht.getGiaConLai()));
+        }
+        return listqlhttk;    }
+
+    @Override
+    public String updatencc(String TenNCC, String MaHT) {
+         boolean addCate = rs.updateNCC(TenNCC,MaHT);
+        if (addCate) {
+            return "Thanh cong";
+        }
+        return "That bai";    }
+
+    @Override
+    public String updatexx(String Tenxx, String MaHT) {
+        boolean addCate = rs.updatexx(Tenxx,MaHT);
+        if (addCate) {
+            return "Thanh cong";
+        }
+        return "That bai";   
     }
 
     @Override
-    public boolean update(HopThitView ht) {
-        HopThitDomain domain = getHopThitDomain(ht);
-        return this.rs.update(domain);
+    public String updateGG(String MaGG, String MaHT) {
+        boolean addCate = rs.updateGG(MaGG,MaHT);
+        if (addCate) {
+            return "Thanh cong";
+        }
+        return "That bai";   
+
     }
 
     @Override
-    public boolean delete(HopThitView ht) {
-        HopThitDomain domain = getHopThitDomain(ht);
-        return this.rs.delete(domain);
-    }
-
-    @Override
-    public List<LayIDHT> getIDHT() {
-return rs.getID();
+    public String update(String TensT, String MaHT) {
+        boolean addCate = rs.updateThit(TensT,MaHT);
+        if (addCate) {
+            return "Thanh cong";
+        }
+        return "That bai";   
     }
 }
 

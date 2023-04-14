@@ -42,7 +42,7 @@ public class NhaCungCap extends javax.swing.JFrame {
                 x.getId(),
                 x.getMa(),
                 x.getTen(),
-                x.getTrangthai()
+                x.setTrangThaiS(x.getTrangthai())
             };
             model.addRow(rowData);
         }

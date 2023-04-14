@@ -15,19 +15,18 @@ import java.util.Date;
 public class QuanLyGiamGiaHT {
  private String Ma;
 private String Ten;
-private BigDecimal GiaBan;
-private BigDecimal GiaConLai;
+private Float GiaBan;
+private Float GiaConLai;
 private int SoLuongTon;
 private Date HSD;
 private int TrangThai;
 private String IdGiamGia;
 private int PhanTramGiamGia;
-private int NgayConLai;
 
     public QuanLyGiamGiaHT() {
     }
 
-    public QuanLyGiamGiaHT(String Ma, String Ten, BigDecimal GiaBan, BigDecimal GiaConLai, int SoLuongTon, Date HSD, int TrangThai, String IdGiamGia, int PhanTramGiamGia, int NgayConLai) {
+    public QuanLyGiamGiaHT(String Ma, String Ten, Float GiaBan, Float GiaConLai, int SoLuongTon, Date HSD, int TrangThai, String IdGiamGia, int PhanTramGiamGia) {
         this.Ma = Ma;
         this.Ten = Ten;
         this.GiaBan = GiaBan;
@@ -37,7 +36,6 @@ private int NgayConLai;
         this.TrangThai = TrangThai;
         this.IdGiamGia = IdGiamGia;
         this.PhanTramGiamGia = PhanTramGiamGia;
-        this.NgayConLai = NgayConLai;
     }
 
     public String getMa() {
@@ -56,19 +54,19 @@ private int NgayConLai;
         this.Ten = Ten;
     }
 
-    public BigDecimal getGiaBan() {
+    public Float getGiaBan() {
         return GiaBan;
     }
 
-    public void setGiaBan(BigDecimal GiaBan) {
+    public void setGiaBan(Float GiaBan) {
         this.GiaBan = GiaBan;
     }
 
-    public BigDecimal getGiaConLai() {
+    public Float getGiaConLai() {
         return GiaConLai;
     }
 
-    public void setGiaConLai(BigDecimal GiaConLai) {
+    public void setGiaConLai(Float GiaConLai) {
         this.GiaConLai = GiaConLai;
     }
 
@@ -110,19 +108,6 @@ private int NgayConLai;
 
     public void setPhanTramGiamGia(int PhanTramGiamGia) {
         this.PhanTramGiamGia = PhanTramGiamGia;
-    }
-
-    public int getNgayConLai() {
-        return NgayConLai;
-    }
-
-    public void setNgayConLai(int NgayConLai) {
-        this.NgayConLai = NgayConLai;
-    }
-
-    @Override
-    public String toString() {
-        return "QuanLyGiamGiaHT{" + "Ma=" + Ma + ", Ten=" + Ten + ", GiaBan=" + GiaBan + ", GiaConLai=" + GiaConLai + ", SoLuongTon=" + SoLuongTon + ", HSD=" + HSD + ", TrangThai=" + TrangThai + ", IdGiamGia=" + IdGiamGia + ", PhanTramGiamGia=" + PhanTramGiamGia + ", NgayConLai=" + NgayConLai + '}';
     }
 
 

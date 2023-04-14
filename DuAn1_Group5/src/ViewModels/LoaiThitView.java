@@ -101,5 +101,11 @@ public class LoaiThitView {
         return Objects.equals(this.id, other.id);
     }
     
-    
+    public String setTrangThaiS(int TrangThai){
+        if(TrangThai==0){
+            return "còn hàng";
+        } else{
+            return "hết";
+        }
+    }    
 }
